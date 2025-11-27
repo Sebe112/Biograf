@@ -13,7 +13,7 @@ export class AuthService {
   constructor(private userService: UserService) {}
 
   login(email: string, password: string): { success: boolean; message: string; user?: User } {
-    const user = this.userService.authenticate(email, password);
+    const user = (this.userService as any).authenticate?.(email, password) ?? null;
 
     if (!user) {
       return { success: false, message: 'Forkert email eller kode. Prøv igen.' };
