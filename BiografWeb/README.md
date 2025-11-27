@@ -54,6 +54,16 @@ ng e2e
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
+## Troubleshooting local TypeScript errors
+
+If your editor shows `Cannot find module '@angular/core'` (or other `@angular/*` imports) even though the project builds, ensure the workspace TypeScript version is used:
+
+1. Run `npm ci` to restore dependencies (this project targets TypeScript `~5.7.2`).
+2. In VS Code, use the **Select TypeScript Version** command and pick **Use Workspace Version**, or rely on the provided `.vscode/settings.json` which pins `typescript.tsdk` to `./node_modules/typescript/lib`.
+3. Reload the window. The diagnostics should disappear once the editor loads the workspace compiler.
+
+These steps are safe on Windows and macOS and keep editor diagnostics aligned with the Angular CLI build.
+
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.

@@ -1,1 +1,53 @@
-<p>home works!</p>
+<section class="hero">
+  <div>
+    <p class="eyebrow">Biografweb · Dummy data</p>
+    <h1>Oplev næste forestilling – uden at vente på API'et</h1>
+    <p class="lead">Vi fokuserer på frontend først: statiske filmdata, showtimes og et loginflow klar til senere integration.</p>
+    <div class="actions">
+      <a routerLink="/movies" class="primary">Se filmprogram</a>
+      <a routerLink="/cinemas" class="primary ghost">Find biograf</a>
+      <a routerLink="/login" class="ghost">Gå til login</a>
+    </div>
+  </div>
+  <div class="hero-card" *ngIf="featuredHero as movie">
+    <p class="label">Næste forestilling</p>
+    <h3>{{ movie.title }}</h3>
+    <p>{{ movie.description }}</p>
+    <div class="chip-row">
+      <span class="chip">{{ movie.ageRating }}+</span>
+      <span class="chip">{{ movie.durationMinutes }} min</span>
+      <span class="chip">{{ movie.genres.slice(0,2).join(', ') }}</span>
+    </div>
+  </div>
+</section>
+
+<section class="featured">
+  <div class="section-header">
+    <h2>Udvalgte film</h2>
+    <a routerLink="/movies" class="link">Se alle</a>
+  </div>
+  <div class="card-grid">
+    <article class="card" *ngFor="let movie of featured">
+      <div class="poster" *ngIf="movie.posterUrl" [style.backgroundImage]="'url(' + movie.posterUrl + ')'">
+        <span class="age">{{ movie.ageRating }}</span>
+      </div>
+      <div class="card-body">
+        <h3>{{ movie.title }}</h3>
+        <p class="meta">{{ movie.durationMinutes }} min · {{ movie.genres.join(', ') }}</p>
+        <p class="summary">{{ movie.description }}</p>
+        <div class="showtimes" *ngIf="movie.showtimes.length">
+          <span *ngFor="let time of movie.showtimes" class="pill">{{ time }}</span>
+        </div>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="steps">
+  <h2>Sådan tester vi frontend'en</h2>
+  <ol>
+    <li><strong>Dummy data</strong> leveres fra <code>MovieService</code>.</li>
+    <li><strong>Routing</strong> mellem forside, filmoversigt og login.</li>
+    <li><strong>Senere</strong> kan API-kald kobles på uden at ændre UI-flow.</li>
+  </ol>
+</section>

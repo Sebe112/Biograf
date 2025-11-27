@@ -1,19 +1,27 @@
-<h1>Aktuelle film</h1>
+<header class="page-header">
+  <div>
+    <p class="eyebrow">Dummy program</p>
+    <h1>Aktuelle film i biografen</h1>
+    <p class="sub">Data kommer direkte fra MovieService, så vi kan teste UI uden backend.</p>
+  </div>
+</header>
 
 <div class="movie-grid">
-  <div class="movie-card" *ngFor="let movie of movies">
+  <article class="movie-card" *ngFor="let movie of movies">
     <img *ngIf="movie.posterUrl" [src]="movie.posterUrl" [alt]="movie.title">
 
-    <h2>{{ movie.title }}</h2>
+    <div class="card-body">
+      <div class="title-row">
+        <h2>{{ movie.title }}</h2>
+        <span class="age">{{ movie.ageRating }}</span>
+      </div>
 
-    <p><strong>Spilletid:</strong> {{ movie.durationMinutes }} min</p>
-    <p><strong>Aldersgrænse:</strong> {{ movie.ageRating }}</p>
+      <p class="meta"><strong>Spilletid:</strong> {{ movie.durationMinutes }} min · <strong>Genrer:</strong> {{ movie.genres.join(', ') }}</p>
+      <p class="description">{{ movie.description }}</p>
 
-    <p>
-      <strong>Genrer:</strong>
-      {{ movie.genres.join(', ') }}
-    </p>
-
-    <p>{{ movie.description }}</p>
-  </div>
+      <div class="showtimes" *ngIf="movie.showtimes.length">
+        <span *ngFor="let time of movie.showtimes" class="pill">{{ time }}</span>
+      </div>
+    </div>
+  </article>
 </div>

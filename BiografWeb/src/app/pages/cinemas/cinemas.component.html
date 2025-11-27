@@ -1,0 +1,36 @@
+<header class="page-header">
+  <div>
+    <p class="eyebrow">Biografer</p>
+    <h1>Find en biograf og se dens program</h1>
+    <p class="sub">Vi holder alt på dummy data, så du kan teste flowet uden backend.</p>
+  </div>
+</header>
+
+<section class="cinema-grid">
+  <article class="cinema-card" *ngFor="let cinema of cinemas">
+    <div class="header">
+      <div>
+        <p class="eyebrow">{{ cinema.city }}</p>
+        <h2>{{ cinema.name }}</h2>
+        <p class="address">{{ cinema.address }}</p>
+      </div>
+      <div class="screens">{{ cinema.screens }} sale</div>
+    </div>
+
+    <div class="program" *ngIf="cinema.program.length">
+      <h3>Film i programmet</h3>
+      <div class="program-grid">
+        <div class="program-item" *ngFor="let entry of cinema.program">
+          <div>
+            <p class="movie-title">{{ entry.movie.title }}</p>
+            <p class="meta">{{ entry.movie.durationMinutes }} min · {{ entry.movie.genres.join(', ') }}</p>
+            <p class="description">{{ entry.movie.description }}</p>
+          </div>
+          <div class="showtimes">
+            <span class="pill" *ngFor="let time of entry.times">{{ time }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>
