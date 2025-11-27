@@ -1,0 +1,54 @@
+<header class="page-header">
+  <div>
+    <p class="eyebrow">Biografer</p>
+    <h1>Find en biograf og se dens program</h1>
+    <p class="sub">Vi holder alt på dummy data, så du kan teste flowet uden backend.</p>
+  </div>
+</header>
+
+<section class="cinema-layout">
+  <aside class="cinema-list">
+    <p class="eyebrow">Vælg biograf</p>
+    <button
+      type="button"
+      class="cinema-pill"
+      *ngFor="let cinema of cinemas"
+      (click)="selectCinema(cinema)"
+      [class.active]="cinema.id === selectedCinema?.id"
+    >
+      <span class="city">{{ cinema.city }}</span>
+      <span class="name">{{ cinema.name }}</span>
+      <span class="count">{{ cinema.program.length }} film</span>
+    </button>
+  </aside>
+
+  <section class="cinema-detail" *ngIf="selectedCinema as cinema">
+    <div class="detail-header">
+      <div>
+        <p class="eyebrow">{{ cinema.city }}</p>
+        <h2>{{ cinema.name }}</h2>
+        <p class="address">{{ cinema.address }}</p>
+      </div>
+      <div class="screens">{{ cinema.screens }} sale</div>
+    </div>
+
+    <div class="program" *ngIf="cinema.program.length; else noProgram">
+      <h3>Film der vises i denne biograf</h3>
+      <div class="program-grid">
+        <article class="program-item" *ngFor="let entry of cinema.program">
+          <div class="movie-meta">
+            <p class="movie-title">{{ entry.movie.title }}</p>
+            <p class="meta">{{ entry.movie.durationMinutes }} min · {{ entry.movie.genres.join(', ') }}</p>
+            <p class="description">{{ entry.movie.description }}</p>
+          </div>
+          <div class="showtimes">
+            <span class="pill" *ngFor="let time of entry.times">{{ time }}</span>
+          </div>
+        </article>
+      </div>
+    </div>
+    <ng-template #noProgram>
+      <div class="empty">Ingen forestillinger er planlagt i denne biograf endnu.</div>
+    </ng-template>
+  </section>
+</section>

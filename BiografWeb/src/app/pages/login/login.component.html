@@ -1,1 +1,38 @@
-<p>login works!</p>
+<section class="login-panel">
+  <h1>Login (demo)</h1>
+  <p class="sub">Formen er klar, men ingen API-kald sendes før backend er på plads.</p>
+
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <label for="email">Email</label>
+    <input id="email" name="email" type="email" required [(ngModel)]="email" placeholder="brugernavn@biograf.dk" [disabled]="!!loggedInUser">
+
+    <label for="password">Adgangskode</label>
+    <input id="password" name="password" type="password" required [(ngModel)]="password" placeholder="••••••" [disabled]="!!loggedInUser">
+
+    <button type="submit" [disabled]="!loginForm.form.valid || !!loggedInUser">Login</button>
+    <button type="button" class="ghost" *ngIf="loggedInUser" (click)="logout()">Log ud</button>
+  </form>
+
+  <p class="status" *ngIf="loginStatus">{{ loginStatus }}</p>
+
+  <div class="status-card" *ngIf="loggedInUser as user">
+    <p class="eyebrow">Aktiv demo-bruger</p>
+    <h2>{{ user.name }}</h2>
+    <p class="email">{{ user.email }}</p>
+    <span class="pill" *ngIf="user.isAdmin">Admin</span>
+  </div>
+
+  <div class="dummy-users">
+    <h2>Dummy brugere</h2>
+    <p class="sub">Alle er lokale og kræver ingen backend. Admin-flagget kan bruges senere til paneler.</p>
+    <ul>
+      <li *ngFor="let user of users">
+        <div>
+          <strong>{{ user.name }}</strong>
+          <p class="email">{{ user.email }}</p>
+        </div>
+        <span class="pill" *ngIf="user.isAdmin">Admin</span>
+      </li>
+    </ul>
+  </div>
+</section>

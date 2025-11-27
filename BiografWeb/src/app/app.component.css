@@ -1,0 +1,95 @@
+:host {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: #0f172a;
+  display: block;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem 1.5rem;
+  background: #0b1b33;
+  color: #f8fafc;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-decoration: none;
+  color: #f8fafc;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
+.nav-links {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.nav-links a {
+  color: #e2e8f0;
+  text-decoration: none;
+  padding: 0.35rem 0.55rem;
+  border-radius: 6px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  background: #1d4ed8;
+  color: #f8fafc;
+}
+
+.home-link {
+  margin-left: auto;
+  color: #93c5fd;
+  text-decoration: underline;
+  font-weight: 700;
+}
+
+.user-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #0f172a;
+  border: 1px solid #1e293b;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+}
+
+.user-pill .name {
+  font-weight: 700;
+  color: #e2e8f0;
+}
+
+.user-pill .role {
+  background: #2563eb;
+  color: #f8fafc;
+  border-radius: 999px;
+  padding: 0.1rem 0.45rem;
+  font-size: 0.85rem;
+}
+
+.user-pill button {
+  background: transparent;
+  border: none;
+  color: #cbd5e1;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.page-shell {
+  padding: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}

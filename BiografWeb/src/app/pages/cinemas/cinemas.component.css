@@ -1,0 +1,167 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1rem;
+  padding: 2rem 0;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.page-header h1 {
+  margin: 0.25rem 0;
+  font-size: 2rem;
+}
+
+.page-header .sub {
+  color: #6b7280;
+}
+
+.cinema-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 1.5rem;
+  align-items: start;
+}
+
+.cinema-list {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 1rem;
+  padding: 1rem;
+  position: sticky;
+  top: 88px;
+  display: grid;
+  gap: 0.65rem;
+}
+
+.cinema-pill {
+  display: grid;
+  grid-template-columns: 1fr;
+  text-align: left;
+  gap: 0.1rem;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.85rem;
+  background: #fff;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
+}
+
+.cinema-pill:hover {
+  border-color: #bfdbfe;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.08);
+  transform: translateY(-1px);
+}
+
+.cinema-pill.active {
+  border-color: #2563eb;
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.12);
+}
+
+.cinema-pill .city {
+  font-weight: 700;
+  color: #1e293b;
+}
+
+.cinema-pill .name {
+  color: #475569;
+}
+
+.cinema-pill .count {
+  color: #2563eb;
+  font-weight: 700;
+}
+
+.cinema-detail {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.address {
+  color: #6b7280;
+  margin: 0.25rem 0 0;
+}
+
+.screens {
+  background: #f3f4f6;
+  padding: 0.5rem 0.75rem;
+  border-radius: 999px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.program {
+  margin-top: 1.25rem;
+}
+
+.program-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.program-item {
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  align-items: start;
+}
+
+.movie-title {
+  font-weight: 700;
+  margin: 0 0 0.25rem;
+}
+
+.meta {
+  margin: 0;
+  color: #6b7280;
+}
+
+.description {
+  margin: 0.5rem 0 0;
+  color: #0f172a;
+}
+
+.showtimes {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.pill {
+  background: #111827;
+  color: #fff;
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.empty {
+  padding: 1rem;
+  border: 1px dashed #cbd5e1;
+  border-radius: 0.75rem;
+  color: #475569;
+  background: #f8fafc;
+}
