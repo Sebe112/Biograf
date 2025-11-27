@@ -8,14 +8,14 @@
       <a routerLink="/login" class="ghost">Gå til login</a>
     </div>
   </div>
-  <div class="hero-card" *ngIf="featuredHero as movie">
+  <div class="hero-card">
     <p class="label">Næste forestilling</p>
-    <h3>{{ movie.title }}</h3>
-    <p>{{ movie.description }}</p>
+    <h3>{{ featured[0]?.title }}</h3>
+    <p>{{ featured[0]?.description }}</p>
     <div class="chip-row">
-      <span class="chip">{{ movie.ageRating }}+</span>
-      <span class="chip">{{ movie.durationMinutes }} min</span>
-      <span class="chip">{{ movie.genres.slice(0,2).join(', ') }}</span>
+      <span class="chip">{{ featured[0]?.ageRating }}+</span>
+      <span class="chip">{{ featured[0]?.durationMinutes }} min</span>
+      <span class="chip">{{ featured[0]?.genres?.slice(0,2).join(', ') }}</span>
     </div>
   </div>
 </section>
@@ -34,7 +34,7 @@
         <h3>{{ movie.title }}</h3>
         <p class="meta">{{ movie.durationMinutes }} min · {{ movie.genres.join(', ') }}</p>
         <p class="summary">{{ movie.description }}</p>
-        <div class="showtimes" *ngIf="movie.showtimes.length">
+        <div class="showtimes" *ngIf="movie.showtimes?.length">
           <span *ngFor="let time of movie.showtimes" class="pill">{{ time }}</span>
         </div>
       </div>
