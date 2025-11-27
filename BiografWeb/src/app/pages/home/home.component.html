@@ -1,53 +1,81 @@
 <section class="hero">
-  <div>
-    <p class="eyebrow">Biografweb · Dummy data</p>
-    <h1>Oplev næste forestilling – uden at vente på API'et</h1>
-    <p class="lead">Vi fokuserer på frontend først: statiske filmdata, showtimes og et loginflow klar til senere integration.</p>
-    <div class="actions">
-      <a routerLink="/movies" class="primary">Se filmprogram</a>
-      <a routerLink="/cinemas" class="primary ghost">Find biograf</a>
-      <a routerLink="/login" class="ghost">Gå til login</a>
+  <div class="hero-bg"></div>
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">Empire-inspireret • Dummy data</p>
+      <h1>Én biograf, flere sale. Find din visning og køb billet (demo).</h1>
+      <p class="lead">Som hos Empire Bio: lounge-stemning, kuraterede titler, faste sale. Alt er mock, så du kan teste flowet uden API.</p>
+      <div class="cta-row">
+        <a routerLink="/halls" class="btn primary">Se sale & program</a>
+        <a routerLink="/login" class="btn ghost">Login</a>
+      </div>
+      <div class="tags">
+        <span class="tag">Sale med egne tider</span>
+        <span class="tag">Dummy-login</span>
+        <span class="tag">Ingen ventetid på API</span>
+      </div>
     </div>
-  </div>
-  <div class="hero-card" *ngIf="featured?.length">
-    <p class="label">Næste forestilling</p>
-    <h3>{{ featured[0].title }}</h3>
-    <p>{{ featured[0].description }}</p>
-    <div class="chip-row">
-      <span class="chip">{{ featured[0].ageRating }}+</span>
-      <span class="chip">{{ featured[0].durationMinutes }} min</span>
-      <span class="chip">{{ featured[0].genres.slice(0,2).join(', ') }}</span>
+
+    <div class="hero-panel" *ngIf="featured.length">
+      <p class="label">Udvalgt film</p>
+      <h3>{{ featured[0].title }}</h3>
+      <p class="meta">{{ featured[0].durationMinutes }} min • {{ featured[0].genres.join(', ') }}</p>
+      <p class="summary">{{ featured[0].description }}</p>
+      <div class="times" *ngIf="featured[0].showtimes?.length">
+        <span class="pill" *ngFor="let time of featured[0].showtimes">{{ time }}</span>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="featured">
-  <div class="section-header">
-    <h2>Udvalgte film</h2>
-    <a routerLink="/movies" class="link">Se alle</a>
+<section class="highlights">
+  <div class="highlight-card">
+    <h3>Sal-centreret</h3>
+    <p>Film ligger under hver sal med egne tider. Ingen løse film-lister.</p>
   </div>
-  <div class="card-grid">
-    <article class="card" *ngFor="let movie of featured">
+  <div class="highlight-card">
+    <h3>Login på mock</h3>
+    <p>Brug en dummy-bruger og se “Du er logget ind som …” i navbaren.</p>
+  </div>
+  <div class="highlight-card">
+    <h3>Klar til API</h3>
+    <p>Services kan peges mod rigtige endpoints uden at ændre UI-flow.</p>
+  </div>
+</section>
+
+<section class="featured-list" *ngIf="featured.length">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">Udvalgte titler</p>
+      <h2>På plakaten i vores sale</h2>
+    </div>
+    <a routerLink="/halls" class="link">Se program pr. sal</a>
+  </div>
+
+  <div class="movie-grid">
+    <article class="movie-card" *ngFor="let movie of featured">
       <div class="poster" *ngIf="movie.posterUrl" [style.backgroundImage]="'url(' + movie.posterUrl + ')'">
         <span class="age">{{ movie.ageRating }}</span>
       </div>
       <div class="card-body">
-        <h3>{{ movie.title }}</h3>
-        <p class="meta">{{ movie.durationMinutes }} min · {{ movie.genres.join(', ') }}</p>
+        <div class="title-row">
+          <a [routerLink]="['/movie', movie.id]" class="title-link">{{ movie.title }}</a>
+          <span class="age-chip">{{ movie.durationMinutes }} min</span>
+        </div>
+        <p class="meta">{{ movie.genres.join(', ') }}</p>
         <p class="summary">{{ movie.description }}</p>
         <div class="showtimes" *ngIf="movie.showtimes?.length">
-          <span *ngFor="let time of movie.showtimes" class="pill">{{ time }}</span>
+          <span class="pill" *ngFor="let time of movie.showtimes">{{ time }}</span>
         </div>
       </div>
     </article>
   </div>
 </section>
 
-<section class="steps">
-  <h2>Sådan tester vi frontend'en</h2>
-  <ol>
-    <li><strong>Dummy data</strong> leveres fra <code>MovieService</code>.</li>
-    <li><strong>Routing</strong> mellem forside, filmoversigt og login.</li>
-    <li><strong>Senere</strong> kan API-kald kobles på uden at ændre UI-flow.</li>
-  </ol>
+<section class="cta-banner">
+  <div>
+    <p class="eyebrow">Klar på at teste?</p>
+    <h2>Hop ind på sal-oversigten, vælg film og tider – alt kører på mock.</h2>
+  </div>
+  <a routerLink="/halls" class="btn primary">Gå til sale</a>
 </section>

@@ -1,0 +1,71 @@
+<ng-container *ngIf="movie; else missing">
+  <header class="header">
+    <div>
+      <p class="eyebrow">Køb billet</p>
+      <h1>{{ movie.title }}</h1>
+      <p class="meta">{{ movie.durationMinutes }} min • {{ movie.genres.join(', ') }} • {{ movie.ageRating }}+</p>
+      <p class="summary">{{ movie.description }}</p>
+      <div class="tags">
+        <span class="tag">Empire Bio</span>
+        <span class="tag">Dummy flow</span>
+      </div>
+    </div>
+    <img *ngIf="movie.posterUrl" [src]="movie.posterUrl" [alt]="movie.title">
+  </header>
+
+  <section class="times">
+    <h2>Vælg visning</h2>
+    <div class="time-grid" *ngIf="showtimes.length; else noTimes">
+      <div class="time-card" *ngFor="let entry of showtimes">
+        <p class="hall">{{ entry.hallName }}</p>
+        <p class="meta">{{ entry.sound }} <span *ngIf="entry.screenType">• {{ entry.screenType }}</span></p>
+        <div class="buttons">
+          <button
+            *ngFor="let time of entry.times"
+            type="button"
+            [class.active]="time === selectedTime"
+            (click)="select(time)">
+            {{ time }}
+          </button>
+        </div>
+        <p class="format" *ngIf="entry.format">{{ entry.format }}</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="purchase">
+    <h2>Billetter</h2>
+    <div class="seats">
+      <div class="screen">Lærred</div>
+      <div class="legend">
+        <span class="seat available"></span> Ledig
+        <span class="seat selected"></span> Valgt
+        <span class="seat reserved"></span> Reserveret
+      </div>
+      <div class="seat-grid">
+        <div class="row" *ngFor="let row of seatRows">
+          <div
+            class="seat"
+            *ngFor="let col of seatCols"
+            [class.reserved]="isReserved(row + col)"
+            [class.selected]="isSelected(row + col)"
+            (click)="toggleSeat(row + col)">
+            {{ row }}{{ col }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button type="button" (click)="book()">Gå til betaling (dummy)</button>
+    <p class="status" *ngIf="status">{{ status }}</p>
+  </section>
+</ng-container>
+
+<ng-template #noTimes>
+  <p>Ingen visninger fundet for denne film.</p>
+</ng-template>
+
+<ng-template #missing>
+  <p>Filmen blev ikke fundet.</p>
+  <a routerLink="/halls" class="link">Tilbage til sale</a>
+</ng-template>

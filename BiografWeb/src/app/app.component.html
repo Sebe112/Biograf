@@ -1,9 +1,15 @@
 <header class="topbar">
-  <div class="brand">Biografweb</div>
+  <a class="brand" routerLink="/home">Biografweb</a>
   <nav>
-    <a routerLink="/home" routerLinkActive="active">Forside</a>
-    <a routerLink="/movies" routerLinkActive="active">Film</a>
-    <a routerLink="/login" routerLinkActive="active" class="login-link">Login</a>
+    <a routerLink="/halls" routerLinkActive="active">Sale & program</a>
+    <ng-container *ngIf="currentUser$ | async as user; else guest">
+      <a *ngIf="user.isAdmin" routerLink="/admin" routerLinkActive="active" class="admin-link">Admin</a>
+      <span class="user-pill">Logget ind som {{ user.name }}</span>
+      <button type="button" class="logout-btn" (click)="logout()">Log ud</button>
+    </ng-container>
+    <ng-template #guest>
+      <a routerLink="/login" routerLinkActive="active" class="login-link">Login</a>
+    </ng-template>
   </nav>
 </header>
 

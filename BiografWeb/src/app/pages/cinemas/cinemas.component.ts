@@ -27,7 +27,7 @@ export class CinemasComponent implements OnInit {
       .map(cinema => {
         const program = cinema.movies
           .map(show => {
-            const movie = (this.movieService as any).getMovieById?.(show.movieId);
+            const movie = this.movieService.getMovieById(show.movieId);
             if (!movie) {
               return undefined;
             }

@@ -1,0 +1,39 @@
+<header class="page-header">
+  <div>
+    <p class="eyebrow">{{ venue?.name }}</p>
+    <h1>Sale & program</h1>
+    <p class="sub">{{ venue?.tagline }} Find den sal og visning, der passer dig.</p>
+    <p class="sub small">{{ venue?.address }}</p>
+  </div>
+</header>
+
+<section class="hall-grid">
+  <article class="hall-card" *ngFor="let hall of halls">
+    <div class="hall-head">
+      <div>
+        <p class="eyebrow">Sal</p>
+        <h2>{{ hall.name }}</h2>
+        <p class="meta">{{ hall.seats }} pladser • {{ hall.sound }} <span *ngIf="hall.screenType">• {{ hall.screenType }}</span></p>
+      </div>
+    </div>
+
+    <div class="program" *ngIf="hall.program.length">
+      <h3>Program</h3>
+      <div class="program-list">
+        <div class="program-item" *ngFor="let entry of hall.program">
+          <div class="program-meta">
+            <img *ngIf="entry.movie.posterUrl" [src]="entry.movie.posterUrl" [alt]="entry.movie.title">
+            <a [routerLink]="['/movie', entry.movie.id]" class="movie-title">{{ entry.movie.title }}</a>
+            <p class="meta">{{ entry.movie.durationMinutes }} min • {{ entry.movie.genres.join(', ') }}</p>
+            <p class="description">{{ entry.movie.description }}</p>
+          </div>
+          <div class="times">
+            <span class="pill" *ngFor="let time of entry.times">{{ time }}</span>
+            <span class="format" *ngIf="entry.format">{{ entry.format }}</span>
+          </div>
+          <a [routerLink]="['/movie', entry.movie.id]" class="link">Køb billet</a>
+        </div>
+      </div>
+    </div>
+  </article>
+</section>

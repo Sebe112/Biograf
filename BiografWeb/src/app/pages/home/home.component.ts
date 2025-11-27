@@ -15,6 +15,6 @@ export class HomeComponent {
   featured: Movie[] = [];
 
   constructor(private movieService: MovieService) {
-    this.featured = this.movieService.getFeatured();
+    this.featured = this.movieService.getFeatured(4);
   }
 }

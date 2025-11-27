@@ -18,4 +18,9 @@ export class UserService {
   getAdmins(): User[] {
     return this.users.filter(user => user.isAdmin);
   }
+
+  authenticate(email: string, _password: string): User | null {
+    // Dummy auth: match on email only; password er ikke valideret i denne fase.
+    return this.users.find(user => user.email.toLowerCase() === email.toLowerCase()) ?? null;
+  }
 }
