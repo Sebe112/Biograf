@@ -11,4 +11,14 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 })
 export class AppComponent {
   title = 'Biografweb';
+
+  constructor(private authService: AuthService) {}
+
+  get currentUser$() {
+    return this.authService.currentUser$;
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
 }
