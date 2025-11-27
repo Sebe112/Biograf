@@ -16,7 +16,6 @@ type CinemaProgram = Cinema & { program: { movie: Movie; times: string[] }[] };
 })
 export class CinemasComponent implements OnInit {
   cinemas: CinemaProgram[] = [];
-  selectedCinema?: CinemaProgram;
 
   constructor(
     private cinemaService: CinemaService,
@@ -24,17 +23,11 @@ export class CinemasComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const moviesById = this.movieService.getMovies()
-      .reduce<Record<number, Movie>>((acc, movie) => {
-        acc[movie.id] = movie;
-        return acc;
-      }, {});
-
     this.cinemas = this.cinemaService.getCinemas()
       .map(cinema => {
         const program = cinema.movies
           .map(show => {
-            const movie = moviesById[show.movieId];
+            const movie = (this.movieService as any).getMovieById?.(show.movieId);
             if (!movie) {
               return undefined;
             }
@@ -44,11 +37,5 @@ export class CinemasComponent implements OnInit {
 
         return { ...cinema, program };
       });
-
-    this.selectedCinema = this.cinemas[0];
-  }
-
-  selectCinema(cinema: CinemaProgram): void {
-    this.selectedCinema = cinema;
   }
 }

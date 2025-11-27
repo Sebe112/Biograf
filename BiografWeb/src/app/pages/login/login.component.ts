@@ -1,9 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { UserService } from '../../services/user.service';
-import { User } from '../../models/user';
-import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -16,25 +13,9 @@ export class LoginComponent {
   email = '';
   password = '';
   loginStatus = '';
-  users: User[] = [];
-  loggedInUser: User | null = null;
-
-  constructor(private userService: UserService, private authService: AuthService) {
-    this.users = this.userService.getUsers();
-    this.authService.currentUser$.subscribe(user => this.loggedInUser = user);
-  }
 
   onSubmit(): void {
-    const result = this.authService.login(this.email, this.password);
-    this.loginStatus = result.message;
-    if (result.success) {
-      this.email = '';
-      this.password = '';
-    }
-  }
-
-  logout(): void {
-    this.authService.logout();
-    this.loginStatus = 'Du er logget ud af demoen.';
+    this.loginStatus = 'Demo-login: der sendes ingen API-kald endnu. Du kan frit teste UI-flowet.';
+    console.log('Login attempt (dummy):', { email: this.email, password: this.password });
   }
 }

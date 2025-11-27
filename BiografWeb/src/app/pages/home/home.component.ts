@@ -14,10 +14,6 @@ import { Movie } from '../../models/movie';
 export class HomeComponent {
   featured: Movie[] = [];
 
-  get featuredHero(): Movie | null {
-    return this.featured.length ? this.featured[0] : null;
-  }
-
   constructor(private movieService: MovieService) {
     this.featured = this.movieService.getFeatured();
   }

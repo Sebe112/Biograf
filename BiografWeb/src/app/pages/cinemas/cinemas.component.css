@@ -16,63 +16,13 @@
   color: #6b7280;
 }
 
-.cinema-layout {
+.cinema-grid {
   display: grid;
-  grid-template-columns: 280px 1fr;
   gap: 1.5rem;
-  align-items: start;
+  margin-top: 1.5rem;
 }
 
-.cinema-list {
-  background: #f8fafc;
-  border: 1px solid #e2e8f0;
-  border-radius: 1rem;
-  padding: 1rem;
-  position: sticky;
-  top: 88px;
-  display: grid;
-  gap: 0.65rem;
-}
-
-.cinema-pill {
-  display: grid;
-  grid-template-columns: 1fr;
-  text-align: left;
-  gap: 0.1rem;
-  padding: 0.75rem 0.85rem;
-  border: 1px solid #e2e8f0;
-  border-radius: 0.85rem;
-  background: #fff;
-  cursor: pointer;
-  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.1s ease;
-}
-
-.cinema-pill:hover {
-  border-color: #bfdbfe;
-  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.08);
-  transform: translateY(-1px);
-}
-
-.cinema-pill.active {
-  border-color: #2563eb;
-  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.12);
-}
-
-.cinema-pill .city {
-  font-weight: 700;
-  color: #1e293b;
-}
-
-.cinema-pill .name {
-  color: #475569;
-}
-
-.cinema-pill .count {
-  color: #2563eb;
-  font-weight: 700;
-}
-
-.cinema-detail {
+.cinema-card {
   background: #ffffff;
   border: 1px solid #e5e7eb;
   border-radius: 1rem;
@@ -80,7 +30,7 @@
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
-.detail-header {
+.cinema-card .header {
   display: flex;
   justify-content: space-between;
   gap: 1rem;
@@ -88,12 +38,12 @@
   flex-wrap: wrap;
 }
 
-.address {
+.cinema-card .address {
   color: #6b7280;
   margin: 0.25rem 0 0;
 }
 
-.screens {
+.cinema-card .screens {
   background: #f3f4f6;
   padding: 0.5rem 0.75rem;
   border-radius: 999px;
@@ -103,6 +53,10 @@
 
 .program {
   margin-top: 1.25rem;
+}
+
+.program h3 {
+  margin-bottom: 0.75rem;
 }
 
 .program-grid {
@@ -120,19 +74,18 @@
   align-items: start;
 }
 
-.movie-title {
+.program-item .movie-title {
   font-weight: 700;
   margin: 0 0 0.25rem;
 }
 
-.meta {
+.program-item .meta {
   margin: 0;
   color: #6b7280;
 }
 
-.description {
+.program-item .description {
   margin: 0.5rem 0 0;
-  color: #0f172a;
 }
 
 .showtimes {
@@ -156,12 +109,4 @@
   font-size: 0.75rem;
   color: #6b7280;
   margin: 0;
-}
-
-.empty {
-  padding: 1rem;
-  border: 1px dashed #cbd5e1;
-  border-radius: 0.75rem;
-  color: #475569;
-  background: #f8fafc;
 }

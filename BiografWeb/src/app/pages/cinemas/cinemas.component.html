@@ -6,24 +6,9 @@
   </div>
 </header>
 
-<section class="cinema-layout">
-  <aside class="cinema-list">
-    <p class="eyebrow">Vælg biograf</p>
-    <button
-      type="button"
-      class="cinema-pill"
-      *ngFor="let cinema of cinemas"
-      (click)="selectCinema(cinema)"
-      [class.active]="cinema.id === selectedCinema?.id"
-    >
-      <span class="city">{{ cinema.city }}</span>
-      <span class="name">{{ cinema.name }}</span>
-      <span class="count">{{ cinema.program.length }} film</span>
-    </button>
-  </aside>
-
-  <section class="cinema-detail" *ngIf="selectedCinema as cinema">
-    <div class="detail-header">
+<section class="cinema-grid">
+  <article class="cinema-card" *ngFor="let cinema of cinemas">
+    <div class="header">
       <div>
         <p class="eyebrow">{{ cinema.city }}</p>
         <h2>{{ cinema.name }}</h2>
@@ -32,11 +17,11 @@
       <div class="screens">{{ cinema.screens }} sale</div>
     </div>
 
-    <div class="program" *ngIf="cinema.program.length; else noProgram">
-      <h3>Film der vises i denne biograf</h3>
+    <div class="program" *ngIf="cinema.program.length">
+      <h3>Film i programmet</h3>
       <div class="program-grid">
-        <article class="program-item" *ngFor="let entry of cinema.program">
-          <div class="movie-meta">
+        <div class="program-item" *ngFor="let entry of cinema.program">
+          <div>
             <p class="movie-title">{{ entry.movie.title }}</p>
             <p class="meta">{{ entry.movie.durationMinutes }} min · {{ entry.movie.genres.join(', ') }}</p>
             <p class="description">{{ entry.movie.description }}</p>
@@ -44,11 +29,8 @@
           <div class="showtimes">
             <span class="pill" *ngFor="let time of entry.times">{{ time }}</span>
           </div>
-        </article>
+        </div>
       </div>
     </div>
-    <ng-template #noProgram>
-      <div class="empty">Ingen forestillinger er planlagt i denne biograf endnu.</div>
-    </ng-template>
-  </section>
+  </article>
 </section>

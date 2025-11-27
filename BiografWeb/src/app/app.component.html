@@ -1,19 +1,9 @@
 <header class="topbar">
-  <a class="brand" routerLink="/home">Biografweb</a>
+  <div class="brand">Biografweb</div>
   <nav>
-    <div class="nav-links">
-      <a routerLink="/movies" routerLinkActive="active">Film</a>
-      <a routerLink="/cinemas" routerLinkActive="active">Biografer</a>
-      <a routerLink="/login" routerLinkActive="active">Login</a>
-    </div>
-    <a class="home-link" routerLink="/home">Forside</a>
-    <div class="user-pill" *ngIf="currentUser$ | async as user">
-      <div>
-        <span class="name">{{ user.name }}</span>
-        <span class="role" *ngIf="user.isAdmin">Admin</span>
-      </div>
-      <button type="button" (click)="logout()">Log ud</button>
-    </div>
+    <a routerLink="/home" routerLinkActive="active">Forside</a>
+    <a routerLink="/movies" routerLinkActive="active">Film</a>
+    <a routerLink="/login" routerLinkActive="active" class="login-link">Login</a>
   </nav>
 </header>
 
