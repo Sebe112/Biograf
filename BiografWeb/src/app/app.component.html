@@ -1,7 +1,12 @@
-<nav>
-  <a routerLink="/home">Forside</a>
-  <a routerLink="/movies">Film</a>
-  <a routerLink="/login" style="float:right">Login</a>
-</nav>
+<header class="topbar">
+  <div class="brand">Biografweb</div>
+  <nav>
+    <a routerLink="/home" routerLinkActive="active">Forside</a>
+    <a routerLink="/movies" routerLinkActive="active">Film</a>
+    <a routerLink="/login" routerLinkActive="active" class="login-link">Login</a>
+  </nav>
+</header>
 
-<router-outlet></router-outlet>
+<main class="page-shell">
+  <router-outlet></router-outlet>
+</main>
