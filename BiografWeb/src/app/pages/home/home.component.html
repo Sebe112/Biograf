@@ -35,7 +35,7 @@
         <h3>{{ movie.title }}</h3>
         <p class="meta">{{ movie.durationMinutes }} min · {{ movie.genres.join(', ') }}</p>
         <p class="summary">{{ movie.description }}</p>
-        <div class="showtimes" *ngIf="movie.showtimes.length">
+        <div class="showtimes" *ngIf="movie.showtimes?.length">
           <span *ngFor="let time of movie.showtimes" class="pill">{{ time }}</span>
         </div>
       </div>

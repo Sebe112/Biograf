@@ -52,39 +52,3 @@ button:disabled {
   color: #0f172a;
   font-weight: 600;
 }
-
-.dummy-users {
-  margin-top: 1.5rem;
-  border-top: 1px solid #e2e8f0;
-  padding-top: 1rem;
-}
-
-.dummy-users ul {
-  list-style: none;
-  padding: 0;
-  margin: 0.75rem 0 0;
-  display: grid;
-  gap: 0.5rem;
-}
-
-.dummy-users li {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 0.75rem;
-}
-
-.dummy-users .email {
-  margin: 0;
-  color: #475569;
-}
-
-.pill {
-  background: #0f172a;
-  color: #fff;
-  padding: 0.3rem 0.55rem;
-  border-radius: 999px;
-  font-size: 0.85rem;
-}

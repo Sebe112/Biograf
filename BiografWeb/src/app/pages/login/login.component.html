@@ -13,18 +13,4 @@
   </form>
 
   <p class="status" *ngIf="loginStatus">{{ loginStatus }}</p>
-
-  <div class="dummy-users">
-    <h2>Dummy brugere</h2>
-    <p class="sub">Alle er lokale og kræver ingen backend. Admin-flagget kan bruges senere til paneler.</p>
-    <ul>
-      <li *ngFor="let user of users">
-        <div>
-          <strong>{{ user.name }}</strong>
-          <p class="email">{{ user.email }}</p>
-        </div>
-        <span class="pill" *ngIf="user.isAdmin">Admin</span>
-      </li>
-    </ul>
-  </div>
 </section>

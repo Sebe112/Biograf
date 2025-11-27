@@ -58,8 +58,4 @@ export class MovieService {
   getFeatured(count: number = 3): Movie[] {
     return this.movies.slice(0, count);
   }
-
-  getMovieById(id: number): Movie | undefined {
-    return this.movies.find(movie => movie.id === id);
-  }
 }

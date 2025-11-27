@@ -23,17 +23,11 @@ export class CinemasComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const moviesById = this.movieService.getMovies()
-      .reduce<Record<number, Movie>>((acc, movie) => {
-        acc[movie.id] = movie;
-        return acc;
-      }, {});
-
     this.cinemas = this.cinemaService.getCinemas()
       .map(cinema => {
         const program = cinema.movies
           .map(show => {
-            const movie = moviesById[show.movieId];
+            const movie = this.movieService.getMovieById(show.movieId);
             if (!movie) {
               return undefined;
             }
