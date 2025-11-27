@@ -15,7 +15,7 @@
     <div class="chip-row">
       <span class="chip">{{ featured[0]?.ageRating }}+</span>
       <span class="chip">{{ featured[0]?.durationMinutes }} min</span>
-      <span class="chip">{{ featured[0]?.genres?.slice(0,2).join(', ') }}</span>
+      <span class="chip">{{ (featured[0]?.genres ?? []).slice(0,2).join(', ') }}</span>
     </div>
   </div>
 </section>
