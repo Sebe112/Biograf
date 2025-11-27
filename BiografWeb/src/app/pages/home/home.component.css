@@ -1,0 +1,180 @@
+.hero {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.25rem 0;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: #475569;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.35rem;
+}
+
+h1 {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  margin: 0.1rem 0 0.75rem;
+}
+
+.lead {
+  color: #475569;
+  margin-bottom: 0.9rem;
+  line-height: 1.5;
+}
+
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.actions a {
+  text-decoration: none;
+  padding: 0.65rem 1.2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.actions a:hover {
+  transform: translateY(-1px);
+}
+
+.primary {
+  background: #1d4ed8;
+  color: #f8fafc;
+  box-shadow: 0 8px 20px rgba(29, 78, 216, 0.25);
+}
+
+.ghost {
+  background: #e2e8f0;
+  color: #0f172a;
+}
+
+.hero-card {
+  background: linear-gradient(145deg, #0b1b33, #12284b);
+  color: #f8fafc;
+  padding: 1.2rem;
+  border-radius: 12px;
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
+}
+
+.label {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.78rem;
+  color: #cbd5e1;
+}
+
+.hero-card h3 {
+  margin: 0.35rem 0;
+}
+
+.chip-row {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.chip {
+  background: rgba(148, 163, 184, 0.2);
+  padding: 0.35rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  color: #e2e8f0;
+}
+
+.featured {
+  margin-top: 2rem;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 4px 10px rgba(15, 23, 42, 0.06);
+}
+
+.poster {
+  background-size: cover;
+  background-position: center;
+  height: 180px;
+  position: relative;
+}
+
+.age {
+  position: absolute;
+  right: 0.5rem;
+  top: 0.5rem;
+  background: rgba(15, 23, 42, 0.75);
+  color: #f8fafc;
+  padding: 0.3rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+}
+
+.card-body {
+  padding: 0.9rem;
+}
+
+.meta {
+  color: #475569;
+  margin: 0.35rem 0;
+}
+
+.summary {
+  color: #334155;
+  line-height: 1.45;
+}
+
+.showtimes {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+  margin-top: 0.65rem;
+}
+
+.pill {
+  background: #e2e8f0;
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.85rem;
+}
+
+.steps {
+  margin-top: 2rem;
+  background: #f8fafc;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.steps ol {
+  margin: 0.5rem 0 0;
+  color: #334155;
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .hero {
+    grid-template-columns: 1fr;
+  }
+}
