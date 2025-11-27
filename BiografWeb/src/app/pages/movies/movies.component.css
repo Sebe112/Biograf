@@ -1,18 +1,80 @@
+.page-header {
+  margin-bottom: 1rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  color: #475569;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+  margin: 0;
+}
+
+.sub {
+  color: #475569;
+  margin: 0.25rem 0 0;
+}
+
 .movie-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
   gap: 1rem;
 }
 
 .movie-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 0.75rem;
-  background: #fafafa;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 8px 18px rgba(15, 23, 42, 0.08);
 }
 
 .movie-card img {
   width: 100%;
-  border-radius: 4px;
-  margin-bottom: 0.5rem;
+  height: 320px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 0.85rem;
+}
+
+.title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.age {
+  background: #0b1b33;
+  color: #f8fafc;
+  padding: 0.35rem 0.5rem;
+  border-radius: 8px;
+  font-size: 0.85rem;
+}
+
+.meta {
+  color: #475569;
+  margin: 0.35rem 0;
+}
+
+.description {
+  color: #334155;
+  line-height: 1.5;
+}
+
+.showtimes {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.pill {
+  background: #e2e8f0;
+  padding: 0.35rem 0.55rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.85rem;
 }
