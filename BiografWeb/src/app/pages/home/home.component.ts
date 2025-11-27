@@ -13,10 +13,8 @@ import { Movie } from '../../models/movie';
 })
 export class HomeComponent {
   featured: Movie[] = [];
-  featuredHero?: Movie;
 
   constructor(private movieService: MovieService) {
     this.featured = this.movieService.getFeatured();
-    this.featuredHero = this.featured[0];
   }
 }
