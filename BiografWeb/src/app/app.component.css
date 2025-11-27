@@ -1,0 +1,52 @@
+:host {
+  font-family: 'Inter', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  color: #0f172a;
+  display: block;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 1.5rem;
+  background: #0b1b33;
+  color: #f8fafc;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+nav a {
+  color: #e2e8f0;
+  text-decoration: none;
+  padding: 0.4rem 0.75rem;
+  border-radius: 6px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+nav a:hover,
+nav a.active {
+  background: #1d4ed8;
+  color: #f8fafc;
+}
+
+.login-link {
+  border: 1px solid #334155;
+}
+
+.page-shell {
+  padding: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
