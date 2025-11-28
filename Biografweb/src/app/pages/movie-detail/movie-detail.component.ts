@@ -64,7 +64,7 @@ export class MovieDetailComponent implements OnInit {
       this.seatLayout = this.hallService.getSeatLayout(this.selectedHallId);
     }
 
-    // Dummy reserverede sæder per sal|tidspunkt.
+    // Dummy reserverede sæder per sal/tidspunkt.
     this.reservedByTime = {
       '1|I dag 18:00': ['A1', 'A2', 'B4', 'C5'],
       '1|I dag 21:00': ['B1', 'B2', 'B3'],
