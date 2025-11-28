@@ -21,9 +21,9 @@ export class HallService {
       sound: 'Lyd',
       screenType: undefined,
       shows: [
-        { movieId: 4, times: ['I dag 18:00', 'I dag 21:00'], format: 'Atmos' },
+        { movieId: 4, times: ['I dag 18:00', 'I dag 21:00']},
         { movieId: 1, times: ['Lørdag 16:30'] },
-        { movieId: 6, times: ['Søndag 19:30'], format: 'IMAX' }
+        { movieId: 6, times: ['Søndag 19:30']}
       ]
     },
     {
@@ -47,8 +47,8 @@ export class HallService {
       shows: [
         { movieId: 3, times: ['I dag 17:00', 'Lørdag 19:30'] },
         { movieId: 1, times: ['Søndag 18:15'] },
-        { movieId: 7, times: ['Lørdag 13:00'], format: 'Danish VO' },
-        { movieId: 9, times: ['Søndag 12:00'], format: 'DK Tale' }
+        { movieId: 7, times: ['Lørdag 13:00'], format: '3D' },
+        { movieId: 9, times: ['Søndag 12:00'], format: 'Dansk Tale' }
       ]
     }
   ];
