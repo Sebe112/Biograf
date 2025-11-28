@@ -29,6 +29,14 @@
   border-radius: 10px;
   padding: 0.9rem;
   background: #f8fafc;
+  display: grid;
+  gap: 0.4rem;
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .link {
@@ -45,6 +53,20 @@
   border-radius: 999px;
   font-weight: 700;
   font-size: 0.85rem;
+}
+
+.badge.muted {
+  background: #cbd5e1;
+  color: #0f172a;
+}
+
+.ghost-btn {
+  border: 1px solid #cbd5e1;
+  background: #fff;
+  color: #475569;
+  border-radius: 8px;
+  padding: 0.45rem 0.7rem;
+  cursor: not-allowed;
 }
 
 .no-access {

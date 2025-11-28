@@ -38,21 +38,6 @@
   </div>
 </section>
 
-<section class="highlights">
-  <div class="highlight-card">
-    <h3>Sale</h3>
-    <p>Hver sal har eget program og setup.</p>
-  </div>
-  <div class="highlight-card">
-    <h3>Visninger</h3>
-    <p>Vælg tidspunkt og se teknikken for salene.</p>
-  </div>
-  <div class="highlight-card">
-    <h3>Sæder</h3>
-    <p>Pluk pladser i salen før du går til betaling.</p>
-  </div>
-</section>
-
 <section class="picker">
   <div class="picker-head">
     <h2>Find en sal for en film</h2>
@@ -67,7 +52,6 @@
     <div class="showing-card" *ngFor="let s of showings">
       <p class="eyebrow">Sal</p>
       <h3>{{ s.hallName }}</h3>
-      <p class="meta">{{ s.sound }} <span *ngIf="s.screenType">• {{ s.screenType }}</span></p>
       <div class="times">
         <a
           *ngFor="let t of s.times"
@@ -87,17 +71,16 @@
 <section class="featured-list" *ngIf="featured.length">
   <div class="section-heading">
     <div>
-      <p class="eyebrow">Udvalgte titler</p>
+      <p class="eyebrow strong">Udvalgte titler</p>
       <h2>På plakaten</h2>
     </div>
-    <a routerLink="/halls" class="link">Se program pr. sal</a>
   </div>
 
   <div class="movie-grid">
     <article class="movie-card" *ngFor="let movie of featured">
-      <div class="poster" *ngIf="movie.posterUrl" [style.backgroundImage]="'url(' + movie.posterUrl + ')'">
+      <a class="poster" *ngIf="movie.posterUrl" [style.backgroundImage]="'url(' + movie.posterUrl + ')'" [routerLink]="['/movie', movie.id]">
         <span class="age">{{ movie.ageRating }}</span>
-      </div>
+      </a>
       <div class="card-body">
         <div class="title-row">
           <a [routerLink]="['/movie', movie.id]" class="title-link">{{ movie.title }}</a>

@@ -44,7 +44,7 @@ export class MovieService {
       durationMinutes: 166,
       ageRating: '13',
       genres: ['Sci-Fi', 'Adventure'],
-      posterUrl: 'https://image.tmdb.org/t/p/w500/8b8f1e7lA1QWy0b6a5Bs86lv8qs.jpg',
+      posterUrl: 'https://image.tmdb.org/t/p/w500/tQ91wWQJ2WRNDXwxuO7GCXX5VPC.jpg',
       showtimes: ['I dag 17:30', 'Mandag 20:00']
     },
     {
@@ -64,7 +64,7 @@ export class MovieService {
       durationMinutes: 180,
       ageRating: '15',
       genres: ['Drama', 'History'],
-      posterUrl: 'https://image.tmdb.org/t/p/w500/bjBeCOvR2vcNQZPgoE5pEu4eMiU.jpg',
+      posterUrl: 'https://image.tmdb.org/t/p/w500/bkpPTZUdq31UGDovmszC6kBWRc5.jpg',
       showtimes: ['I dag 21:15', 'Søndag 16:00']
     },
     {
