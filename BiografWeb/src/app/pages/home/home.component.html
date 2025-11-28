@@ -1,22 +1,32 @@
 <section class="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div
+    class="hero-poster"
+    *ngIf="featured.length && featured[0].posterUrl"
+    [style.backgroundImage]="'linear-gradient(90deg, rgba(11,27,51,0.85), rgba(11,27,51,0.7)), url(' + featured[0].posterUrl + ')'">
+  </div>
   <div class="hero-grid">
     <div class="hero-copy">
-      <p class="eyebrow">Empire-inspireret • Dummy data</p>
-      <h1>Én biograf, flere sale. Find din visning og køb billet (demo).</h1>
-      <p class="lead">Som hos Empire Bio: lounge-stemning, kuraterede titler, faste sale. Alt er mock, så du kan teste flowet uden API.</p>
+      <p class="eyebrow">Velkommen i biografen</p>
+      <h1>Vælg sal, film og sæder til næste forestilling.</h1>
+      <p class="lead">Se programmet, vælg visning og book dine pladser i vores sale.</p>
       <div class="cta-row">
         <a routerLink="/halls" class="btn primary">Se sale & program</a>
         <a routerLink="/login" class="btn ghost">Login</a>
       </div>
       <div class="tags">
         <span class="tag">Sale med egne tider</span>
-        <span class="tag">Dummy-login</span>
-        <span class="tag">Ingen ventetid på API</span>
+        <span class="tag">Sædevalg</span>
+        <span class="tag">Køb billet</span>
       </div>
     </div>
 
     <div class="hero-panel" *ngIf="featured.length">
+      <div
+        class="panel-backdrop"
+        *ngIf="featured[0].posterUrl"
+        [style.backgroundImage]="'url(' + featured[0].posterUrl + ')'">
+      </div>
       <p class="label">Udvalgt film</p>
       <h3>{{ featured[0].title }}</h3>
       <p class="meta">{{ featured[0].durationMinutes }} min • {{ featured[0].genres.join(', ') }}</p>
@@ -30,24 +40,55 @@
 
 <section class="highlights">
   <div class="highlight-card">
-    <h3>Sal-centreret</h3>
-    <p>Film ligger under hver sal med egne tider. Ingen løse film-lister.</p>
+    <h3>Sale</h3>
+    <p>Hver sal har eget program og setup.</p>
   </div>
   <div class="highlight-card">
-    <h3>Login på mock</h3>
-    <p>Brug en dummy-bruger og se “Du er logget ind som …” i navbaren.</p>
+    <h3>Visninger</h3>
+    <p>Vælg tidspunkt og se teknikken for salene.</p>
   </div>
   <div class="highlight-card">
-    <h3>Klar til API</h3>
-    <p>Services kan peges mod rigtige endpoints uden at ændre UI-flow.</p>
+    <h3>Sæder</h3>
+    <p>Pluk pladser i salen før du går til betaling.</p>
   </div>
+</section>
+
+<section class="picker">
+  <div class="picker-head">
+    <h2>Find en sal for en film</h2>
+    <div class="picker-control">
+      <label for="movieSelect">Vælg film</label>
+      <select id="movieSelect" [(ngModel)]="selectedMovieId" (change)="updateShowings()">
+        <option *ngFor="let movie of movies" [ngValue]="movie.id">{{ movie.title }}</option>
+      </select>
+    </div>
+  </div>
+  <div class="showing-grid" *ngIf="showings.length; else noShows">
+    <div class="showing-card" *ngFor="let s of showings">
+      <p class="eyebrow">Sal</p>
+      <h3>{{ s.hallName }}</h3>
+      <p class="meta">{{ s.sound }} <span *ngIf="s.screenType">• {{ s.screenType }}</span></p>
+      <div class="times">
+        <a
+          *ngFor="let t of s.times"
+          class="pill link-pill"
+          [routerLink]="['/movie', selectedMovieId]"
+          [queryParams]="{ time: t, hall: s.hallId }">
+          {{ t }}
+        </a>
+      </div>
+    </div>
+  </div>
+  <ng-template #noShows>
+    <p>Ingen sal fundet for den valgte film.</p>
+  </ng-template>
 </section>
 
 <section class="featured-list" *ngIf="featured.length">
   <div class="section-heading">
     <div>
       <p class="eyebrow">Udvalgte titler</p>
-      <h2>På plakaten i vores sale</h2>
+      <h2>På plakaten</h2>
     </div>
     <a routerLink="/halls" class="link">Se program pr. sal</a>
   </div>
@@ -74,8 +115,8 @@
 
 <section class="cta-banner">
   <div>
-    <p class="eyebrow">Klar på at teste?</p>
-    <h2>Hop ind på sal-oversigten, vælg film og tider – alt kører på mock.</h2>
+    <p class="eyebrow">Klar til næste film?</p>
+    <h2>Hop ind på sal-oversigten, vælg film og tider.</h2>
   </div>
   <a routerLink="/halls" class="btn primary">Gå til sale</a>
 </section>

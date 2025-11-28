@@ -1,20 +1,20 @@
 <section class="admin-panel" *ngIf="user?.isAdmin; else noAccess">
   <header>
     <p class="eyebrow">Admin</p>
-    <h1>Kontrolpanel (dummy)</h1>
+    <h1>Kontrolpanel</h1>
     <p class="meta">Du er logget ind som {{ user?.name }}.</p>
   </header>
 
   <div class="grid">
     <div class="card">
       <h3>Program</h3>
-      <p>Oversigt over sale og film (mock). Senere kan dette kobles til API.</p>
+      <p>Oversigt over sale og film. Klar til drift eller videre integration.</p>
       <a routerLink="/halls" class="link">Gå til sale</a>
     </div>
     <div class="card">
       <h3>Brugere</h3>
-      <p>Ingen backend endnu. Brug dummy-login for at teste admin-flow.</p>
-      <span class="badge">Dummy</span>
+      <p>Styring af brugere og roller.</p>
+      <span class="badge">Frontend</span>
     </div>
   </div>
 </section>

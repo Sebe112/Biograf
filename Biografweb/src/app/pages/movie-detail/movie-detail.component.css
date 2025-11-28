@@ -166,7 +166,7 @@
 
 .row {
   display: grid;
-  grid-template-columns: repeat(8, 44px);
+  grid-template-columns: repeat(9, 44px);
   gap: 0.35rem;
   justify-content: center;
 }
@@ -200,6 +200,10 @@
   color: #475569;
   cursor: not-allowed;
   text-decoration: line-through;
+}
+
+.aisle {
+  width: 44px;
 }
 
 .purchase button {

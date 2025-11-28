@@ -15,21 +15,21 @@
 
   <section class="times">
     <h2>Vælg visning</h2>
-    <div class="time-grid" *ngIf="showtimes.length; else noTimes">
-      <div class="time-card" *ngFor="let entry of showtimes">
-        <p class="hall">{{ entry.hallName }}</p>
-        <p class="meta">{{ entry.sound }} <span *ngIf="entry.screenType">• {{ entry.screenType }}</span></p>
-        <div class="buttons">
-          <button
-            *ngFor="let time of entry.times"
-            type="button"
-            [class.active]="time === selectedTime"
-            (click)="select(time)">
-            {{ time }}
-          </button>
+      <div class="time-grid" *ngIf="showtimes.length; else noTimes">
+        <div class="time-card" *ngFor="let entry of showtimes">
+          <p class="hall">{{ entry.hallName }}</p>
+          <p class="meta">{{ entry.sound }} <span *ngIf="entry.screenType">• {{ entry.screenType }}</span></p>
+          <div class="buttons">
+            <button
+              *ngFor="let time of entry.times"
+              type="button"
+            [class.active]="time === selectedTime && entry.hallId === selectedHallId"
+            (click)="select(entry.hallId, time)">
+              {{ time }}
+            </button>
+          </div>
+          <p class="format" *ngIf="entry.format">{{ entry.format }}</p>
         </div>
-        <p class="format" *ngIf="entry.format">{{ entry.format }}</p>
-      </div>
     </div>
   </section>
 
@@ -43,20 +43,23 @@
         <span class="seat reserved"></span> Reserveret
       </div>
       <div class="seat-grid">
-        <div class="row" *ngFor="let row of seatRows">
-          <div
-            class="seat"
-            *ngFor="let col of seatCols"
-            [class.reserved]="isReserved(row + col)"
-            [class.selected]="isSelected(row + col)"
-            (click)="toggleSeat(row + col)">
-            {{ row }}{{ col }}
-          </div>
+        <div class="row" *ngFor="let row of seatLayout">
+          <ng-container *ngFor="let seat of row">
+            <div class="aisle" *ngIf="seat === null"></div>
+            <div
+              class="seat"
+              *ngIf="seat"
+              [class.reserved]="isReserved(seat)"
+              [class.selected]="isSelected(seat)"
+              (click)="toggleSeat(seat)">
+              {{ seat }}
+            </div>
+          </ng-container>
         </div>
       </div>
     </div>
 
-    <button type="button" (click)="book()">Gå til betaling (dummy)</button>
+    <button type="button" (click)="book()">Gå til betaling</button>
     <p class="status" *ngIf="status">{{ status }}</p>
   </section>
 </ng-container>

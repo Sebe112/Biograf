@@ -16,7 +16,7 @@ export class HallService {
   private halls: Hall[] = [
     {
       id: 1,
-      name: 'Sal 1 – Lounge',
+      name: 'Sal 1 - Lounge',
       seats: 139,
       sound: 'Dolby 7.1',
       screenType: 'Scope',
@@ -28,7 +28,7 @@ export class HallService {
     },
     {
       id: 2,
-      name: 'Sal 2 – Balkon',
+      name: 'Sal 2 - Balkon',
       seats: 92,
       sound: 'Dolby 5.1',
       screenType: 'Flat',
@@ -40,7 +40,7 @@ export class HallService {
     },
     {
       id: 3,
-      name: 'Sal 3 – Art',
+      name: 'Sal 3 - Art',
       seats: 48,
       sound: 'Dolby 5.1',
       screenType: 'Flat',
@@ -53,12 +53,39 @@ export class HallService {
     }
   ];
 
+  private seatLayouts: Record<number, (string | null)[][]> = {
+    1: [
+      ['A1', 'A2', 'A3', null, 'A4', 'A5', 'A6', null, 'A7'],
+      ['B1', 'B2', 'B3', null, 'B4', 'B5', 'B6', null, 'B7'],
+      ['C1', 'C2', 'C3', null, 'C4', 'C5', 'C6', null, 'C7'],
+      ['D1', 'D2', 'D3', null, 'D4', 'D5', 'D6', null, 'D7'],
+      ['E1', 'E2', 'E3', null, 'E4', 'E5', 'E6', null, 'E7'],
+      ['F1', 'F2', 'F3', null, 'F4', 'F5', 'F6', null, 'F7']
+    ],
+    2: [
+      ['A1', 'A2', null, 'A3', 'A4', null, 'A5', 'A6'],
+      ['B1', 'B2', null, 'B3', 'B4', null, 'B5', 'B6'],
+      ['C1', 'C2', null, 'C3', 'C4', null, 'C5', 'C6'],
+      ['D1', 'D2', null, 'D3', 'D4', null, 'D5', 'D6']
+    ],
+    3: [
+      ['A1', 'A2', 'A3', null, 'A4', 'A5'],
+      ['B1', 'B2', 'B3', null, 'B4', 'B5'],
+      ['C1', 'C2', 'C3', null, 'C4', 'C5'],
+      ['D1', 'D2', 'D3', null, 'D4', 'D5']
+    ]
+  };
+
   getVenue() {
     return this.venue;
   }
 
   getHalls(): Hall[] {
     return this.halls;
+  }
+
+  getSeatLayout(hallId: number): (string | null)[][] {
+    return this.seatLayouts[hallId] ?? this.seatLayouts[1];
   }
 
   getShowtimesForMovie(movieId: number) {

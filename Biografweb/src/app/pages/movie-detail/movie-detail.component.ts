@@ -25,9 +25,9 @@ export class MovieDetailComponent implements OnInit {
   }[] = [];
 
   selectedTime = '';
+  selectedHallId: number | null = null;
   status = '';
-  seatRows = ['A', 'B', 'C', 'D', 'E', 'F'];
-  seatCols = [1, 2, 3, 4, 5, 6, 7, 8];
+  seatLayout: (string | null)[][] = [];
   selectedSeats = new Set<string>();
   reservedByTime: Record<string, string[]> = {};
   bookedByTime: Record<string, string[]> = {};
@@ -43,25 +43,38 @@ export class MovieDetailComponent implements OnInit {
     this.movie = this.movieService.getMovieById(id);
     this.showtimes = this.hallService.getShowtimesForMovie(id);
 
+    const qp = this.route.snapshot.queryParamMap;
+    const qpHall = qp.get('hall') ? Number(qp.get('hall')) : null;
+    const qpTime = qp.get('time') ?? null;
+
     if (this.showtimes.length) {
-      this.selectedTime = this.showtimes[0].times[0];
+      const fallbackHall = this.showtimes[0].hallId;
+      const fallbackTime = this.showtimes[0].times[0];
+
+      const hallToUse = qpHall && this.showtimes.some(s => s.hallId === qpHall) ? qpHall : fallbackHall;
+      const hallEntry = this.showtimes.find(s => s.hallId === hallToUse);
+      const timeToUse = qpTime && hallEntry?.times.includes(qpTime) ? qpTime : hallEntry?.times[0] ?? fallbackTime;
+
+      this.selectedHallId = hallToUse;
+      this.selectedTime = timeToUse;
+      this.seatLayout = this.hallService.getSeatLayout(this.selectedHallId);
     }
 
     // Dummy reserverede sæder per tidspunkt
     this.reservedByTime = {
-      'I dag 18:00': ['A1', 'A2', 'B4', 'C5'],
-      'I dag 21:00': ['B1', 'B2', 'B3'],
-      'I dag 17:00': ['C3', 'C4'],
-      'I dag 19:15': ['D2', 'D3'],
-      'Lørdag 16:30': ['A3', 'A4'],
-      'Lørdag 19:30': ['E1', 'E2'],
-      'Lørdag 13:00': ['B5', 'B6', 'C5', 'C6'],
-      'Søndag 12:00': ['A1', 'A2', 'A3'],
-      'Søndag 18:15': ['F1', 'F2'],
-      'Søndag 19:30': ['D5', 'D6'],
-      'Søndag 14:00': ['C2', 'C3'],
-      'Søndag 16:00': ['E4', 'E5'],
-      'Søndag 11:30': ['A7', 'A8']
+      '1|I dag 18:00': ['A1', 'A2', 'B4', 'C5'],
+      '1|I dag 21:00': ['B1', 'B2', 'B3'],
+      '2|I dag 19:15': ['D2', 'D3'],
+      '3|I dag 17:00': ['C3', 'C4'],
+      '1|Lørdag 16:30': ['A3', 'A4'],
+      '3|Lørdag 19:30': ['E1', 'E2'],
+      '3|Lørdag 13:00': ['B5', 'B6', 'C5', 'C6'],
+      '3|Søndag 12:00': ['A1', 'A2', 'A3'],
+      '1|Søndag 18:15': ['F1', 'F2'],
+      '1|Søndag 19:30': ['D5', 'D6'],
+      '2|Søndag 14:00': ['C2', 'C3'],
+      '1|Søndag 16:00': ['E4', 'E5'],
+      '3|Søndag 11:30': ['A7', 'A8']
     };
 
     const stored = sessionStorage.getItem('dummyBookedSeats');
@@ -74,8 +87,10 @@ export class MovieDetailComponent implements OnInit {
     }
   }
 
-  select(time: string): void {
+  select(hallId: number, time: string): void {
+    this.selectedHallId = hallId;
     this.selectedTime = time;
+    this.seatLayout = this.hallService.getSeatLayout(hallId);
     this.status = '';
     this.selectedSeats.clear();
   }
@@ -85,24 +100,27 @@ export class MovieDetailComponent implements OnInit {
       this.status = 'Vælg et tidspunkt først.';
       return;
     }
-    if (!this.selectedSeats.size) {
+    if (!this.selectedSeats.size || this.selectedHallId === null) {
       this.status = 'Vælg mindst ét sæde.';
       return;
     }
     const count = this.selectedSeats.size;
     const seatsList = Array.from(this.selectedSeats).sort().join(', ');
-    this.status = `Billetter reserveret (dummy) til ${this.selectedTime} for ${count} person(er). Sæder: ${seatsList}.`;
+    this.status = `Billetter reserveret (dummy) til ${this.selectedTime} i sal ${this.selectedHallId} for ${count} person(er). Sæder: ${seatsList}.`;
 
-    const existing = this.bookedByTime[this.selectedTime] ?? [];
-    this.bookedByTime[this.selectedTime] = Array.from(new Set([...existing, ...this.selectedSeats]));
+    const key = this.key(this.selectedHallId, this.selectedTime);
+    const existing = this.bookedByTime[key] ?? [];
+    this.bookedByTime[key] = Array.from(new Set([...existing, ...this.selectedSeats]));
     sessionStorage.setItem('dummyBookedSeats', JSON.stringify(this.bookedByTime));
 
     this.selectedSeats.clear();
   }
 
   isReserved(seat: string): boolean {
-    return (this.reservedByTime[this.selectedTime]?.includes(seat) ?? false) ||
-      (this.bookedByTime[this.selectedTime]?.includes(seat) ?? false);
+    if (this.selectedHallId === null) return false;
+    const key = this.key(this.selectedHallId, this.selectedTime);
+    return (this.reservedByTime[key]?.includes(seat) ?? false) ||
+      (this.bookedByTime[key]?.includes(seat) ?? false);
   }
 
   isSelected(seat: string): boolean {
@@ -110,13 +128,13 @@ export class MovieDetailComponent implements OnInit {
   }
 
   toggleSeat(seat: string): void {
-    if (!this.selectedTime || this.isReserved(seat)) {
+    if (!this.selectedTime || this.selectedHallId === null || this.isReserved(seat)) {
       return;
     }
-    if (this.selectedSeats.has(seat)) {
-      this.selectedSeats.delete(seat);
-    } else {
-      this.selectedSeats.add(seat);
-    }
+    this.selectedSeats.has(seat) ? this.selectedSeats.delete(seat) : this.selectedSeats.add(seat);
+  }
+
+  private key(hallId: number, time: string): string {
+    return `${hallId}|${time}`;
   }
 }
