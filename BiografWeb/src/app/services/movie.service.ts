@@ -39,12 +39,12 @@ export class MovieService {
     },
     {
       id: 4,
-      title: 'Dune: Part Two',
-      description: 'Paul Atreides samler Fremen og tager kampen mod Harkonnen-huset.',
-      durationMinutes: 166,
-      ageRating: '13',
-      genres: ['Sci-Fi', 'Adventure'],
-      posterUrl: 'https://image.tmdb.org/t/p/w500/tQ91wWQJ2WRNDXwxuO7GCXX5VPC.jpg',
+      title: 'Interstellar',
+      description: 'Et hold astronauter rejser gennem et ormehul for at redde menneskeheden.',
+      durationMinutes: 169,
+      ageRating: '11',
+      genres: ['Sci-Fi', 'Drama'],
+      posterUrl: 'https://image.tmdb.org/t/p/w500/rAiYTfKGqDCRIIqo664sY9XZIvQ.jpg',
       showtimes: ['I dag 17:30', 'Mandag 20:00']
     },
     {
@@ -59,12 +59,12 @@ export class MovieService {
     },
     {
       id: 6,
-      title: 'Oppenheimer',
-      description: 'Christopher Nolans IMAX-epos om skabelsen af atombomben.',
-      durationMinutes: 180,
-      ageRating: '15',
-      genres: ['Drama', 'History'],
-      posterUrl: 'https://image.tmdb.org/t/p/w500/bkpPTZUdq31UGDovmszC6kBWRc5.jpg',
+      title: 'Inception',
+      description: 'En tyv infiltrerer drømme for at plante en idé i et mål.',
+      durationMinutes: 148,
+      ageRating: '13',
+      genres: ['Sci-Fi', 'Action'],
+      posterUrl: 'https://image.tmdb.org/t/p/w500/edv5CZvWj09upOsy2Y6IwDhK8bt.jpg',
       showtimes: ['I dag 21:15', 'Søndag 16:00']
     },
     {
@@ -89,12 +89,12 @@ export class MovieService {
     },
     {
       id: 9,
-      title: 'Inside Out 2',
-      description: 'Pixars følelsesunivers vender tilbage med nye emotioner i teenagehjernen.',
-      durationMinutes: 100,
-      ageRating: '7',
-      genres: ['Animation', 'Family'],
-      posterUrl: 'https://image.tmdb.org/t/p/w500/iuFNMS8U5cb6xfzi51Dbkovj7vM.jpg',
+      title: 'Spider-Man: Across the Spider-Verse',
+      description: 'Miles Morales rejser gennem multiverset sammen med Spider-folk fra andre dimensioner.',
+      durationMinutes: 140,
+      ageRating: '11',
+      genres: ['Animation', 'Action'],
+      posterUrl: 'https://image.tmdb.org/t/p/w500/8Vt6mWEReuy4Of61Lnj5Xj704m8.jpg',
       showtimes: ['Lørdag 15:00', 'Søndag 12:00']
     }
   ];
