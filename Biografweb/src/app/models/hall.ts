@@ -1,7 +1,7 @@
 export interface HallShow {
   movieId: number;
   times: string[];
-  format?: string; // fx Atmos, 70mm
+  format?: string; // fx Dansk Tale, 3D
 }
 
 export interface Hall {

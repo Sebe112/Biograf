@@ -7,7 +7,7 @@ import { UserService } from './user.service';
   providedIn: 'root'
 })
 export class AuthService {
-  // Simpelt login-state i memory til navbar/admin.
+  // Simpelt login-state til navbar/admin.
   private currentUserSubject = new BehaviorSubject<User | null>(null);
   currentUser$ = this.currentUserSubject.asObservable();
 

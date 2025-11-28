@@ -27,9 +27,13 @@ export class MovieDetailComponent implements OnInit {
   selectedTime = '';
   selectedHallId: number | null = null;
   status = '';
+  // Sædegrid for valgt sal (fra hallService), null = gang.
   seatLayout: (string | null)[][] = [];
+  // Aktuelt valgte sæder i UI.
   selectedSeats = new Set<string>();
+  // Fastlåste sæder per sal/tid (hardkodet dummy).
   reservedByTime: Record<string, string[]> = {};
+  // Sæder som brugeren tidligere har “booket” (gemmes i sessionStorage).
   bookedByTime: Record<string, string[]> = {};
 
   constructor(
@@ -60,7 +64,7 @@ export class MovieDetailComponent implements OnInit {
       this.seatLayout = this.hallService.getSeatLayout(this.selectedHallId);
     }
 
-    // Dummy reserverede sæder per tidspunkt
+    // Dummy reserverede sæder per sal|tidspunkt.
     this.reservedByTime = {
       '1|I dag 18:00': ['A1', 'A2', 'B4', 'C5'],
       '1|I dag 21:00': ['B1', 'B2', 'B3'],

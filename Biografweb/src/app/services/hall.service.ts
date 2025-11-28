@@ -7,13 +7,13 @@ import { Hall } from '../models/hall';
 export class HallService {
   // Basisinfo om biografen.
   private venue = {
-    name: 'Empire Bio',
-    tagline: 'Nørrebro-lounge med fokus på kuraterede titler og roligt foyer-liv.',
-    address: 'Guldbergsgade 29F, 2200 København N',
-    website: 'https://www.empirebio.dk/',
+    name: 'BiografWeb Nørrebro',
+    tagline: 'Nørrebro lounge med fokus på kuraterede titler og roligt foyer-liv.',
+    address: 'Et sted 123, Nørrebro',
+    website: 'http://localhost:4200/halls',
   };
 
-  // Dummy hall-setup inspireret af Empire Bio / Palads typer sale.
+  // Hall-setup (dummy) med film og tider.
   private halls: Hall[] = [
     {
       id: 1,
@@ -54,7 +54,7 @@ export class HallService {
     }
   ];
 
-  // 9 felter pr. række max med nuværende layout, null = gang.
+  // Sædelayout pr. sal. null = gang. Bruges til at tegne grid på køb-siden.
   private seatLayouts: Record<number, (string | null)[][]> = {
     1: [
       ['A1', 'A2', 'A3', null, 'A4', 'A5', 'A6', null, 'A7'],

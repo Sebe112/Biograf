@@ -30,7 +30,9 @@ export class HomeComponent {
     private movieService: MovieService,
     private hallService: HallService
   ) {
+    // Topsektion med udvalgte film.
     this.featured = this.movieService.getFeatured(4);
+    // Dropdown + kort over hvilke sale en film spiller i.
     this.movies = this.movieService.getMovies();
     if (this.movies.length) {
       this.selectedMovieId = this.movies[0].id;
@@ -39,6 +41,7 @@ export class HomeComponent {
   }
 
   updateShowings(): void {
+    // Find alle tider pr. sal for valgt film.
     if (!this.selectedMovieId) {
       this.showings = [];
       return;
