@@ -5,6 +5,7 @@ import { Hall } from '../models/hall';
   providedIn: 'root'
 })
 export class HallService {
+  // Basisinfo om biografen.
   private venue = {
     name: 'Empire Bio',
     tagline: 'Nørrebro-lounge med fokus på kuraterede titler og roligt foyer-liv.',
@@ -52,7 +53,8 @@ export class HallService {
       ]
     }
   ];
-  // 9 felter per række max med nuværende layout, null = gang
+
+  // 9 felter pr. række max med nuværende layout, null = gang.
   private seatLayouts: Record<number, (string | null)[][]> = {
     1: [
       ['A1', 'A2', 'A3', null, 'A4', 'A5', 'A6', null, 'A7'],

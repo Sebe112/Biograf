@@ -5,6 +5,7 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class UserService {
+  // Brugere ligger i memory til demo-login.
   private users: User[] = [
     { id: 1, name: 'Sara Admin', email: 'sara.admin@biograf.dk', isAdmin: true },
     { id: 2, name: 'Jonas Bruger', email: 'jonas.bruger@biograf.dk', isAdmin: false },
@@ -20,7 +21,7 @@ export class UserService {
   }
 
   authenticate(email: string, _password: string): User | null {
-    // password er ikke valideret i denne fase.
+    // Password tjekkes ikke her kun email-match.
     return this.users.find(user => user.email.toLowerCase() === email.toLowerCase()) ?? null;
   }
 }

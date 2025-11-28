@@ -5,7 +5,7 @@ import { Movie } from '../models/movie';
   providedIn: 'root'
 })
 export class MovieService {
-
+  // Dummy filmdata til forsiden og sale.
   private movies: Movie[] = [
     {
       id: 1,

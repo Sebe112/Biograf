@@ -5,6 +5,7 @@ import { Cinema } from '../models/cinema';
   providedIn: 'root'
 })
 export class CinemaService {
+  // dummy-biografer til hvis andre lokationer.
   private cinemas: Cinema[] = [
     {
       id: 1,
