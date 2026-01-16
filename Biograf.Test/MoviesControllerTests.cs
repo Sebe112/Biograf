@@ -86,7 +86,12 @@ public class MoviesControllerTests
 
             return Task.FromResult(false);
         }
+        public Task<List<Movie>> GetAllWithGenresAsync()
+        {
+            return Task.FromResult(_movies);
+        }
     }
+    
 
     [Fact]
     public async Task GetAll_ReturnsOkResult_WithMovies()
