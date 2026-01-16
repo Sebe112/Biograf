@@ -10,4 +10,5 @@ public interface IMovie
     Task<Movie> AddAsync(Movie movie);
     Task<bool> UpdateAsync(Movie movie);
     Task<bool> DeleteAsync(int id);
+    Task<List<Movie>> GetAllWithGenresAsync();
 }

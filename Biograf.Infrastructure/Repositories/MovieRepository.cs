@@ -63,4 +63,15 @@ public class MovieRepository : IMovie
         await _context.SaveChangesAsync();
         return true;
     }
+    public async Task<List<Movie>> GetAllWithGenresAsync()
+    {
+        var query = _context.Movies
+            .Include("MovieGenres")
+            .Include("MovieGenres.Genre");
+
+        var filtered = from dbMovie in query
+                    select dbMovie;
+
+        return await filtered.AsNoTracking().ToListAsync();
+    }
 }

@@ -22,7 +22,7 @@ public class MoviesController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetAll()
     {
-        var movies = await _movie.GetAllAsync();
+        var movies = await _movie.GetAllWithGenresAsync();
         var result = new List<MovieDto>();
 
         foreach (var movie in movies)
@@ -32,6 +32,7 @@ public class MoviesController : ControllerBase
 
         return Ok(result);
     }
+
 
     /// <summary>
     /// Returns a movie by id.
@@ -97,6 +98,20 @@ public class MoviesController : ControllerBase
         dto.Title = movie.Title;
         dto.Description = movie.Description;
         dto.DurationMinutes = movie.DurationMinutes;
+
+        if (movie.MovieGenres != null)
+        {
+            foreach (var mg in movie.MovieGenres)
+            {
+                if (mg.Genre != null)
+                {
+                    dto.Genres.Add(mg.Genre.Name);
+                }
+            }
+        }
+
         return dto;
     }
+
+    
 }

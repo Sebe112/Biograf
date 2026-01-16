@@ -9,4 +9,6 @@ public class MovieDto
     public string Title { get; set; } = "";
     public string? Description { get; set; }
     public int DurationMinutes { get; set; }
+    public List<string> Genres { get; set; } = new();
+
 }

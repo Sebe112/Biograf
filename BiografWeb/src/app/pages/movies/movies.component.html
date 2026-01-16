@@ -15,7 +15,9 @@
           <a [routerLink]="['/movie', movie.id]">{{ movie.title }}</a>
         </h2>
         <p class="meta">{{ movie.durationMinutes }} min</p>
+        <p class="genres" *ngIf="movie.genres?.length">Genres: {{ movie.genres?.join(', ') }}</p>
         <p *ngIf="movie.description">{{ movie.description }}</p>
+        
       </div>
     </article>
   </div>
