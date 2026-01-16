@@ -10,3 +10,15 @@ C:\Users\sebas\Documents\GitHub\Biograf\Biograf.Domain\obj\Debug\net9.0\Biograf.
 C:\Users\sebas\Documents\GitHub\Biograf\Biograf.Domain\obj\Debug\net9.0\refint\Biograf.Domain.dll
 C:\Users\sebas\Documents\GitHub\Biograf\Biograf.Domain\obj\Debug\net9.0\Biograf.Domain.pdb
 C:\Users\sebas\Documents\GitHub\Biograf\Biograf.Domain\obj\Debug\net9.0\ref\Biograf.Domain.dll
+C:\Users\Sebastian\Documents\GitHub\Biograff\Biograf.Domain\bin\Debug\net9.0\Biograf.Domain.deps.json
+C:\Users\Sebastian\Documents\GitHub\Biograff\Biograf.Domain\bin\Debug\net9.0\Biograf.Domain.dll
+C:\Users\Sebastian\Documents\GitHub\Biograff\Biograf.Domain\bin\Debug\net9.0\Biograf.Domain.pdb
+C:\Users\Sebastian\Documents\GitHub\Biograff\Biograf.Domain\obj\Debug\net9.0\Biograf.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Sebastian\Documents\GitHub\Biograff\Biograf.Domain\obj\Debug\net9.0\Biograf.Domain.AssemblyInfoInputs.cache
+C:\Users\Sebastian\Documents\GitHub\Biograff\Biograf.Domain\obj\Debug\net9.0\Biograf.Domain.AssemblyInfo.cs
+C:\Users\Sebastian\Documents\GitHub\Biograff\Biograf.Domain\obj\Debug\net9.0\Biograf.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Sebastian\Documents\GitHub\Biograff\Biograf.Domain\obj\Debug\net9.0\Biograf.Domain.sourcelink.json
+C:\Users\Sebastian\Documents\GitHub\Biograff\Biograf.Domain\obj\Debug\net9.0\Biograf.Domain.dll
+C:\Users\Sebastian\Documents\GitHub\Biograff\Biograf.Domain\obj\Debug\net9.0\refint\Biograf.Domain.dll
+C:\Users\Sebastian\Documents\GitHub\Biograff\Biograf.Domain\obj\Debug\net9.0\Biograf.Domain.pdb
+C:\Users\Sebastian\Documents\GitHub\Biograff\Biograf.Domain\obj\Debug\net9.0\ref\Biograf.Domain.dll

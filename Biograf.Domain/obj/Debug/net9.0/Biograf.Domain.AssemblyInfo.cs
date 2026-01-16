@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Biograf.Domain")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+46aafc0b19f9696248273345640416df735eab57")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+063115540164615ae3c79580f9cde57bcc96f32d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Biograf.Domain")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Biograf.Domain")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
