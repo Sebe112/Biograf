@@ -13,6 +13,7 @@ Example:
   "Audience": "BiografWeb",
   "ExpiresMinutes": "120"
 }
+```
 
 dotnet ef database update --project Biograf.Infrastructure --startup-project Biograf.Api
 dotnet run --project Biograf.Api
