@@ -1,0 +1,27 @@
+<section class="login">
+  <h1>Login</h1>
+  <p class="note">Use your backend account.</p>
+
+  <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
+    <label for="usernameOrEmail">Username or email</label>
+    <input
+      id="usernameOrEmail"
+      name="usernameOrEmail"
+      type="text"
+      required
+      [(ngModel)]="usernameOrEmail">
+
+    <label for="password">Password</label>
+    <input
+      id="password"
+      name="password"
+      type="password"
+      required
+      [(ngModel)]="password">
+
+    <button type="submit" [disabled]="!loginForm.form.valid">Login</button>
+  </form>
+
+  <p class="status" *ngIf="loginStatus">{{ loginStatus }}</p>
+  <p class="note">No account? <a routerLink="/register">Register</a></p>
+</section>

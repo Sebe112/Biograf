@@ -1,0 +1,25 @@
+<section class="home">
+  <h1>Featured movies</h1>
+  <p class="note">A short list from the backend.</p>
+
+  <div class="featured-grid" *ngIf="featured.length; else empty">
+    <article class="featured-card" *ngFor="let movie of featured">
+      <a class="poster" [routerLink]="['/movie', movie.id]">
+        <span class="poster-title">{{ movie.title }}</span>
+      </a>
+      <div class="card-body">
+        <h2>
+          <a [routerLink]="['/movie', movie.id]">{{ movie.title }}</a>
+        </h2>
+        <p class="meta">{{ movie.durationMinutes }} min</p>
+        <p *ngIf="movie.description">{{ movie.description }}</p>
+      </div>
+    </article>
+  </div>
+
+  <ng-template #empty>
+    <p>No movies found.</p>
+  </ng-template>
+
+  <a routerLink="/movies" class="link">See all movies</a>
+</section>

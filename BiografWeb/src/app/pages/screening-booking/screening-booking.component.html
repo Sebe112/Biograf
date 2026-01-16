@@ -1,0 +1,53 @@
+<section class="booking">
+  <a routerLink="/halls" class="back-link">Back to halls</a>
+  <h1>Choose seats</h1>
+
+  <p class="status" *ngIf="loadError">{{ loadError }}</p>
+
+  <div *ngIf="screening && !loadError" class="info">
+    <p><strong>Hall:</strong> {{ screening.hall?.name || ('Hall ' + screening.hallId) }}</p>
+    <p><strong>Starts:</strong> {{ screening.startsAt | date:'short' }}</p>
+    <p><strong>Ends:</strong> {{ screening.endsAt | date:'short' }}</p>
+    <p><strong>Price:</strong> {{ screening.basePrice }}</p>
+  </div>
+
+  <p class="status" *ngIf="loginRequired">Login to select and book seats.</p>
+
+  <div class="legend">
+    <span class="legend-item available">Available</span>
+    <span class="legend-item selected">Selected</span>
+    <span class="legend-item mine">Mine</span>
+    <span class="legend-item booked">Booked</span>
+    <span class="legend-item disabled">Disabled</span>
+  </div>
+
+  <div class="seat-grid-wrap" *ngIf="seatRows.length">
+    <div class="seat-grid">
+      <div class="screen-indicator">
+        <span>Screen</span>
+      </div>
+      <div class="seat-row" *ngFor="let row of seatRows">
+        <span class="row-label">{{ getRowLabel(row) }}</span>
+        <button
+          type="button"
+          *ngFor="let seat of row"
+          [class]="getSeatClass(seat)"
+          (click)="onSeatClick(seat)"
+          [disabled]="!canSelectSeat(seat)">
+          {{ seat.label }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <p *ngIf="!seatRows.length && !loadError">No seats found for this screening.</p>
+
+  <div class="summary" *ngIf="seatRows.length">
+    <div>
+      <p>Selected seats: {{ getSelectedCount() }}</p>
+      <p>Total price: {{ getTotalPrice() }}</p>
+    </div>
+    <button type="button" (click)="bookSelectedSeats()">Book seats</button>
+    <p class="status" *ngIf="status">{{ status }}</p>
+  </div>
+</section>

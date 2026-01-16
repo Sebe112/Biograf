@@ -1,0 +1,27 @@
+.register h1 {
+  margin: 0 0 0.5rem 0;
+}
+
+.note {
+  margin: 0 0 1rem 0;
+  color: var(--muted);
+}
+
+form {
+  display: grid;
+  gap: 0.5rem;
+  max-width: 320px;
+}
+
+input {
+  border-radius: 8px;
+}
+
+button {
+  background: #ffffff;
+}
+
+.status {
+  margin-top: 0.75rem;
+  color: #374151;
+}

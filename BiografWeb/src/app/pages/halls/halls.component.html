@@ -1,0 +1,44 @@
+<section class="halls">
+  <h1>Halls</h1>
+  <p class="note">Loaded from the backend.</p>
+
+  <ul *ngIf="halls.length; else empty">
+    <li *ngFor="let hall of halls">
+      <strong>{{ hall.name }}</strong>
+      <span class="meta">{{ hall.rows }} x {{ hall.columns }}</span>
+    </li>
+  </ul>
+
+  <div class="picker" *ngIf="halls.length">
+    <label for="hallSelect">Pick a hall to see screenings</label>
+    <select id="hallSelect" (change)="onHallChange($event)">
+      <option value="">Choose a hall</option>
+      <option *ngFor="let hall of halls" [value]="hall.id">{{ hall.name }}</option>
+    </select>
+  </div>
+
+  <div class="screenings" *ngIf="selectedHallId !== null">
+    <h2>Screenings</h2>
+    <p class="status" *ngIf="screeningStatus">{{ screeningStatus }}</p>
+
+    <ul *ngIf="getScreeningsForSelectedHall().length; else noScreenings">
+      <li *ngFor="let screening of getScreeningsForSelectedHall()">
+        <div class="row">
+          <div>
+            <strong>{{ getMovieTitle(screening.movieId) }}</strong>
+            <span class="meta">Starts {{ screening.startsAt | date:'short' }}</span>
+          </div>
+          <a [routerLink]="['/screening', screening.id]">Book seats</a>
+        </div>
+      </li>
+    </ul>
+
+    <ng-template #noScreenings>
+      <p>No screenings for this hall.</p>
+    </ng-template>
+  </div>
+
+  <ng-template #empty>
+    <p>No halls found.</p>
+  </ng-template>
+</section>

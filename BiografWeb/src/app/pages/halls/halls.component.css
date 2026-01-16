@@ -1,0 +1,59 @@
+.halls h1 {
+  margin: 0 0 0.5rem 0;
+}
+
+.note {
+  margin: 0 0 1rem 0;
+  color: var(--muted);
+}
+
+.picker {
+  margin: 1.5rem 0;
+  display: grid;
+  gap: 0.5rem;
+  max-width: 320px;
+}
+
+select {
+  background: #ffffff;
+}
+
+.screenings h2 {
+  margin-top: 1.5rem;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.row a {
+  color: var(--accent-2);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+
+.status {
+  margin: 0.5rem 0 0;
+  color: #b45309;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.meta {
+  margin-left: 0.5rem;
+  color: var(--muted);
+  font-size: 0.9rem;
+}

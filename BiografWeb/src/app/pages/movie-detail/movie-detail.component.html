@@ -1,0 +1,27 @@
+<ng-container *ngIf="movie; else missing">
+  <section class="detail">
+    <h1>{{ movie.title }}</h1>
+    <p class="meta">{{ movie.durationMinutes }} min</p>
+    <p *ngIf="movie.description">{{ movie.description }}</p>
+  </section>
+
+  <section class="screenings">
+    <h2>Screenings</h2>
+    <ul *ngIf="screenings.length; else noScreenings">
+      <li *ngFor="let screening of screenings">
+        <strong>{{ getHallName(screening.hallId) }}</strong>
+        <span class="meta">{{ screening.startsAt | date:'short' }}</span>
+        <span class="price" *ngIf="screening.basePrice">Price: {{ screening.basePrice }}</span>
+        <a class="book-link" [routerLink]="['/screening', screening.id]">Book seats</a>
+      </li>
+    </ul>
+    <ng-template #noScreenings>
+      <p>No screenings for this movie.</p>
+    </ng-template>
+  </section>
+</ng-container>
+
+<ng-template #missing>
+  <p>{{ loadError || 'Movie not found.' }}</p>
+  <a routerLink="/movies">Back to movies</a>
+</ng-template>

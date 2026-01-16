@@ -1,0 +1,21 @@
+<header class="topbar">
+  <a class="brand" routerLink="/home">{{ title }}</a>
+  <nav>
+    <a routerLink="/home" routerLinkActive="active">Home</a>
+    <a routerLink="/movies" routerLinkActive="active">Movies</a>
+    <a routerLink="/halls" routerLinkActive="active">Halls</a>
+    <ng-container *ngIf="currentUser$ | async as user; else guest">
+      <a *ngIf="isAdmin(user)" routerLink="/admin" routerLinkActive="active">Admin</a>
+      <span class="user">Logged in as {{ user.username }}</span>
+      <button type="button" class="link-btn" (click)="logout()">Logout</button>
+    </ng-container>
+    <ng-template #guest>
+      <a routerLink="/login" routerLinkActive="active">Login</a>
+      <a routerLink="/register" routerLinkActive="active">Register</a>
+    </ng-template>
+  </nav>
+</header>
+
+<main class="page-shell">
+  <router-outlet></router-outlet>
+</main>

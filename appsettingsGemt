@@ -1,0 +1,18 @@
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*",
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=localhost;Database=Biograf1DB;Trusted_Connection=True;Encrypt=False"
+  },
+  "Jwt": {
+    "Key": "CHANGE_THIS_TO_A_LONG_RANDOM_SECRET_32+CHARS",
+    "Issuer": "Biograf.Api",
+    "Audience": "Biograf.Frontend",
+    "ExpiresMinutes": 120
+  }
+}

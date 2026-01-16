@@ -1,0 +1,17 @@
+global using Microsoft.EntityFrameworkCore;
+global using Biograf.Infrastructure.Data;
+global using Microsoft.AspNetCore.Identity;
+global using Biograf.Domain.Entities;
+global using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+global using System.ComponentModel.DataAnnotations;
+global using System.Text;
+global using Biograf.Application.Services;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.IdentityModel.Tokens;
+global using System.IdentityModel.Tokens.Jwt;
+global using System.Security.Claims;
+global using Biograf.Application.Dtos.Auth;
+global using Microsoft.AspNetCore.Mvc;
+global using Biograf.Domain.Interfaces;
+global using Biograf.Infrastructure.Repositories;
+global using Microsoft.AspNetCore.Authorization;

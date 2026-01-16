@@ -1,0 +1,213 @@
+<section class="admin" *ngIf="isAdmin(user); else noAccess">
+  <h1>Admin panel</h1>
+  <p class="note">Only admins can create, update, and delete.</p>
+
+  <div class="section">
+    <h2>Movies</h2>
+    <form (ngSubmit)="saveMovie()">
+      <label for="movieTitle">Title</label>
+      <input id="movieTitle" name="movieTitle" [(ngModel)]="movieForm.title" required>
+
+      <label for="movieDescription">Description</label>
+      <textarea id="movieDescription" name="movieDescription" [(ngModel)]="movieForm.description"></textarea>
+
+      <label for="movieDuration">Duration (minutes)</label>
+      <input id="movieDuration" name="movieDuration" type="number" [(ngModel)]="movieForm.durationMinutes" required>
+
+      <div class="row">
+        <button type="submit">{{ editingMovieId === null ? 'Create' : 'Update' }}</button>
+        <button type="button" *ngIf="editingMovieId !== null" (click)="cancelMovieEdit()">Cancel</button>
+      </div>
+    </form>
+    <p class="status" *ngIf="movieStatus">{{ movieStatus }}</p>
+
+    <ul>
+      <li *ngFor="let movie of movies">
+        <span>{{ movie.title }} ({{ movie.durationMinutes }} min)</span>
+        <div class="row">
+          <button type="button" (click)="editMovie(movie)">Edit</button>
+          <button type="button" (click)="deleteMovie(movie)">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Halls</h2>
+    <form (ngSubmit)="saveHall()">
+      <label for="hallName">Name</label>
+      <input id="hallName" name="hallName" [(ngModel)]="hallForm.name" required>
+
+      <label for="hallRows">Rows</label>
+      <input id="hallRows" name="hallRows" type="number" [(ngModel)]="hallForm.rows" required>
+
+      <label for="hallColumns">Columns</label>
+      <input id="hallColumns" name="hallColumns" type="number" [(ngModel)]="hallForm.columns" required>
+
+      <div class="row">
+        <button type="submit">{{ editingHallId === null ? 'Create' : 'Update' }}</button>
+        <button type="button" *ngIf="editingHallId !== null" (click)="cancelHallEdit()">Cancel</button>
+      </div>
+    </form>
+    <p class="status" *ngIf="hallStatus">{{ hallStatus }}</p>
+
+    <ul>
+      <li *ngFor="let hall of halls">
+        <span>{{ hall.name }} ({{ hall.rows }} x {{ hall.columns }})</span>
+        <div class="row">
+          <button type="button" (click)="editHall(hall)">Edit</button>
+          <button type="button" (click)="deleteHall(hall)">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Genres</h2>
+    <form (ngSubmit)="saveGenre()">
+      <label for="genreName">Name</label>
+      <input id="genreName" name="genreName" [(ngModel)]="genreForm.name" required>
+
+      <div class="row">
+        <button type="submit">Create</button>
+      </div>
+    </form>
+    <p class="status" *ngIf="genreStatus">{{ genreStatus }}</p>
+
+    <ul>
+      <li *ngFor="let genre of genres">
+        <span>{{ genre.name }}</span>
+        <div class="row">
+          <button type="button" (click)="deleteGenre(genre)">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Movie genres</h2>
+    <form (ngSubmit)="addMovieGenre()">
+      <label for="movieGenreMovie">Movie</label>
+      <select id="movieGenreMovie" name="movieGenreMovie" [(ngModel)]="movieGenreForm.movieId" required>
+        <option [ngValue]="0">Select movie</option>
+        <option *ngFor="let movie of movies" [ngValue]="movie.id">{{ movie.title }}</option>
+      </select>
+
+      <label for="movieGenreGenre">Genre</label>
+      <select id="movieGenreGenre" name="movieGenreGenre" [(ngModel)]="movieGenreForm.genreId" required>
+        <option [ngValue]="0">Select genre</option>
+        <option *ngFor="let genre of genres" [ngValue]="genre.id">{{ genre.name }}</option>
+      </select>
+
+      <div class="row">
+        <button type="submit">Add</button>
+        <button type="button" (click)="removeMovieGenre()">Remove</button>
+      </div>
+    </form>
+    <p class="status" *ngIf="movieGenreStatus">{{ movieGenreStatus }}</p>
+  </div>
+
+  <div class="section">
+    <h2>Screenings</h2>
+    <form (ngSubmit)="saveScreening()">
+      <label for="screeningMovie">Movie</label>
+      <select id="screeningMovie" name="screeningMovie" [(ngModel)]="screeningForm.movieId" required>
+        <option [ngValue]="0">Select movie</option>
+        <option *ngFor="let movie of movies" [ngValue]="movie.id">{{ movie.title }}</option>
+      </select>
+
+      <label for="screeningHall">Hall</label>
+      <select id="screeningHall" name="screeningHall" [(ngModel)]="screeningForm.hallId" required>
+        <option [ngValue]="0">Select hall</option>
+        <option *ngFor="let hall of halls" [ngValue]="hall.id">{{ hall.name }}</option>
+      </select>
+
+      <label for="screeningStarts">Starts at</label>
+      <input
+        id="screeningStarts"
+        name="screeningStarts"
+        type="datetime-local"
+        [(ngModel)]="screeningForm.startsAt"
+        required>
+
+      <label for="screeningEnds">Ends at</label>
+      <input
+        id="screeningEnds"
+        name="screeningEnds"
+        type="datetime-local"
+        [(ngModel)]="screeningForm.endsAt"
+        required>
+
+      <label for="screeningPrice">Base price</label>
+      <input
+        id="screeningPrice"
+        name="screeningPrice"
+        type="number"
+        step="0.01"
+        [(ngModel)]="screeningForm.basePrice">
+
+      <div class="row">
+        <button type="submit">Create</button>
+      </div>
+    </form>
+    <p class="status" *ngIf="screeningStatus">{{ screeningStatus }}</p>
+
+    <ul>
+      <li *ngFor="let screening of screenings">
+        <span>
+          {{ getMovieTitle(screening.movieId) }} · {{ getHallName(screening.hallId) }}
+          ({{ screening.startsAt | date:'short' }} → {{ screening.endsAt | date:'short' }})
+        </span>
+        <div class="row">
+          <button type="button" (click)="deleteScreening(screening)">Delete</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Booked seats by screening</h2>
+    <label for="bookedScreening">Screening</label>
+    <select id="bookedScreening" name="bookedScreening" (change)="onBookedScreeningChange($event)">
+      <option value="">Select screening</option>
+      <option *ngFor="let screening of screenings" [value]="screening.id">
+        {{ getMovieTitle(screening.movieId) }} · {{ screening.startsAt | date:'short' }}
+      </option>
+    </select>
+
+    <p class="status" *ngIf="bookingSeatStatus">{{ bookingSeatStatus }}</p>
+
+    <ul>
+      <li *ngFor="let seat of bookedSeats">
+        <span>Seat {{ seat.seatId }} (booking {{ seat.bookingId }})</span>
+        <div class="row">
+          <button type="button" (click)="removeBookedSeat(seat)">Remove</button>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>Bookings (my account)</h2>
+    <p class="status" *ngIf="bookingStatus">{{ bookingStatus }}</p>
+
+    <ul>
+      <li *ngFor="let booking of bookings">
+        <span>
+          Booking #{{ booking.id }} · Screening {{ booking.screeningId }} · {{ booking.totalPrice }}
+        </span>
+        <div class="row">
+          <span>Seats: {{ booking.bookingSeats.length }}</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<ng-template #noAccess>
+  <section class="admin">
+    <h1>Admin panel</h1>
+    <p>You must be an admin to access this page.</p>
+    <a routerLink="/login">Go to login</a>
+  </section>
+</ng-template>

@@ -1,0 +1,9 @@
+global using System.IdentityModel.Tokens.Jwt;
+global using System.ComponentModel.DataAnnotations;
+global using System.Security.Claims;
+global using System.Text;
+global using Biograf.Application.Dtos.Auth;
+global using Biograf.Domain.Entities;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.Extensions.Configuration;
+global using Microsoft.IdentityModel.Tokens;

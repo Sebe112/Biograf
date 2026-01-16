@@ -1,0 +1,26 @@
+<section class="movies">
+  <h1>Movies</h1>
+  <p class="note">Loaded from the backend.</p>
+
+  <div class="movie-grid" *ngIf="movies.length; else empty">
+    <article class="movie-card" *ngFor="let movie of movies">
+      <a
+        class="poster"
+        [routerLink]="['/movie', movie.id]"
+        [attr.aria-label]="'Open ' + movie.title">
+        <span class="poster-title">{{ movie.title }}</span>
+      </a>
+      <div class="movie-body">
+        <h2>
+          <a [routerLink]="['/movie', movie.id]">{{ movie.title }}</a>
+        </h2>
+        <p class="meta">{{ movie.durationMinutes }} min</p>
+        <p *ngIf="movie.description">{{ movie.description }}</p>
+      </div>
+    </article>
+  </div>
+
+  <ng-template #empty>
+    <p>No movies found.</p>
+  </ng-template>
+</section>
